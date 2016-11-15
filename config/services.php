@@ -35,4 +35,9 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '281651645580884',
+        'client_secret' => 'f1b15ade1ff3869c48caae71cbea1281',
+        'redirect' => 'http://rss-reader.dev/auth/login/facebook/callback',
+    ],
 ];
