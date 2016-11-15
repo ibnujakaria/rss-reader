@@ -40,4 +40,10 @@ return [
         'client_secret' => 'f1b15ade1ff3869c48caae71cbea1281',
         'redirect' => 'http://rss-reader.dev/auth/login/facebook/callback',
     ],
+
+    'google' => [
+        'client_id' => '762976989876-pdrf1mded0atbdmn3r9i6jrk79mio7ht.apps.googleusercontent.com',
+        'client_secret' => 'r2sBtplljYFWKmYpgeo3SO4O',
+        'redirect' => 'http://rss-reader.dev/auth/login/google/callback'
+    ],
 ];
