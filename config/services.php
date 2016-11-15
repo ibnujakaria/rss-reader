@@ -46,4 +46,10 @@ return [
         'client_secret' => 'r2sBtplljYFWKmYpgeo3SO4O',
         'redirect' => 'http://rss-reader.dev/auth/login/google/callback'
     ],
+
+    'twitter' => [
+        'client_id' => 'nmA5ksTbPLiW1NXsqZByDQipi',
+        'client_secret' => 'VWg0TX1RX3L3Y8ThmZhhNlbLce6l9rMBCpFnt3PKh9zu1cHGPY',
+        'redirect' => 'http://rss-reader.dev/auth/login/twitter/callback'
+    ]
 ];
