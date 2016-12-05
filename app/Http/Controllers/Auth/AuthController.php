@@ -10,6 +10,11 @@ use App\Http\Controllers\Controller;
 class AuthController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('guest', ['except' => ['logout']]);
+    }
+
     public function index()
     {
         return view('auth.index');
@@ -35,6 +40,14 @@ class AuthController extends Controller
     		]);
     	}
 
+        \Auth::login($user);
     	return response()->json($user);
+    }
+
+    public function logout()
+    {
+        \Auth::logout();
+
+        return redirect()->route('auth.index');
     }
 }
