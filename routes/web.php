@@ -13,6 +13,10 @@
 
 Route::get('/', 'WelcomeController@welcome');
 
-Route::group(['prefix' => 'home'], function() {
-	Route::get('/', 'Home\HomeController@index')->name('home.index');
+Route::group(['prefix' => 'home', 'namespace' => 'Home'], function () {
+	Route::get('/', 'HomeController@index')->name('home.index');
+
+	Route::group(['prefix' => 'collections', 'namespace' => 'Collections'], function () {
+		Route::get('sites/find', 'SiteFinderController@find');
+	});
 });

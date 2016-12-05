@@ -28,5 +28,8 @@
 	<div>
 		@yield('body')
 	</div>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+	@yield('script')
 </body>
 </html>
