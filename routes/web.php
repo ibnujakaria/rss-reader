@@ -12,3 +12,7 @@
 */
 
 Route::get('/', 'WelcomeController@welcome');
+
+Route::group(['prefix' => 'home'], function() {
+	Route::get('/', 'Home\HomeController@index')->name('home.index');
+});

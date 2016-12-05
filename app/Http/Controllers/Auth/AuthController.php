@@ -41,7 +41,8 @@ class AuthController extends Controller
     	}
 
         \Auth::login($user);
-    	return response()->json($user);
+
+    	return redirect()->route('home.index');
     }
 
     public function logout()
