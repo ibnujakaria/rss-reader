@@ -19,7 +19,7 @@ class AuthController extends Controller
     {
     	$userFromProvider = Socialite::driver($provider)->user();
 
-    	# trying to login
+    	# check if the user with this email exists
     	$user = User::email($userFromProvider->email)->first();
 
     	if (!$user) {
