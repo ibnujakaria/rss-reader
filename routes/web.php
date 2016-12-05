@@ -11,6 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome'); # this is the default
-});
+Route::get('/', 'WelcomeController@welcome');
