@@ -24,8 +24,10 @@ class SiteController extends Controller
     		$entries = $user->collections()->whereHas('sites', function ($query) use ($site) {
     			$query->url($site);
     		})->with(['sites' => function ($query) use ($site) {
-    			$query->with('articles');
-    			$query->url($site);
+                $query->url($site);
+                $query->with(['articles' => function ($query) use ($site) {
+                    $query->orderby('pub_date', 'desc');
+                }]);
     		}])->first();
 
             $site = $entries->sites[0];

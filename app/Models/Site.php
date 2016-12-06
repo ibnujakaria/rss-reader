@@ -49,6 +49,50 @@ class Site extends Model
     	return $site;
     }
 
+    public static function grabNewestArticlesOf($url)
+    {
+        $site = static::url($url)->first();
+
+        $result = RssFinder::read($site->feed_url);
+
+        // echo $result->site->last_synced . " -- " . $site->last_synced . "\n";
+        if ($result->site->last_synced !== $site->last_synced && strtotime($result->site->last_synced) > strtotime($site->last_synced)) {
+            # grab the new articles
+
+            $articlesToStore = collect([]);
+            $lastArticleOfTheSite = $site->articles()->orderby('pub_date', 'desc')->first();
+
+            foreach ($result->articles as $key => $entry) {
+                if (strtotime($entry->pub_date) > strtotime($lastArticleOfTheSite->pub_date)) {
+                    $articlesToStore->push($entry);
+                } else {
+                    break;
+                }
+            }
+
+            # reverse the articles
+            $articlesToStore = $articlesToStore->reverse();
+
+            foreach ($articlesToStore as $key => $entry) {
+                $article = new Article;
+                $article->site_id = $site->id;
+                $article->title = $entry->title;
+                $article->link = $entry->link;
+                $article->description = $entry->description;
+                $article->author = $entry->author;
+                $article->pub_date = $entry->pub_date;
+                $article->save();
+            }
+
+            $site->last_synced = $result->site->last_synced;
+            $site->save();
+
+            return true;
+        }
+
+        return false;
+    }
+
     public function scopeUrl($query, $url)
     {
         return $query->where('url', 'like', "%{$url}");
