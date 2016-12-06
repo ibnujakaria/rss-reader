@@ -31,4 +31,21 @@ class Collection extends Model
 
     	return $collection;
     }
+
+    public static function addSite($collection_id, $site_id)
+    {
+    	$collection = auth()->user()->collections()->find($collection_id);
+
+    	# check if the sites is not already added
+    	if ($collection->sites()->find($site_id)) {
+    		return false;
+    	}
+
+    	CollectionSite::create([
+    		'collection_id' => $collection_id,
+    		'site_id' => $site_id
+    	]);
+
+    	return true;
+    }
 }

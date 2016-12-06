@@ -25,14 +25,24 @@ var home = new Vue({
 				return
 			}
 
-			this.$http.post('/home/collections', {
-				collection_title: this.newCollectionTitle,
-				site_id: this.searchResult.id,
-				_token: csrf_token
-			}).then(function (response) {
-				console.log(response.body)
-				this.getCollectionList()
-			});
+			if (this.newCollectionTitle) {
+				this.$http.post('/home/collections', {
+					collection_title: this.newCollectionTitle,
+					site_id: this.searchResult.id,
+					_token: csrf_token
+				}).then(function (response) {
+					console.log(response.body)
+					this.getCollectionList()
+				});
+			} else {
+				this.$http.post('/home/collections/add-site/' + this.selectedCollectionToAdd + '/' + this.searchResult.id, {
+					_token: csrf_token
+				})
+				.then(function (response) {
+					console.log(response.body)
+					this.getCollectionList()
+				})
+			}
 		}
 	}
 });

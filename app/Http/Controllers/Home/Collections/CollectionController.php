@@ -28,4 +28,13 @@ class CollectionController extends Controller
     {
     	Collection::newCollectionAndASite($request->collection_title, $request->site_id);
     }
+
+    /**
+    * @param $collection_id
+    * @param $site_id
+    */
+    public function addSite($collection_id, $site_id)
+    {
+    	Collection::addSite($collection_id, $site_id);
+    }
 }
