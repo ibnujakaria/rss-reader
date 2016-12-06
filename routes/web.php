@@ -18,5 +18,7 @@ Route::group(['prefix' => 'home', 'namespace' => 'Home'], function () {
 
 	Route::group(['prefix' => 'collections', 'namespace' => 'Collections'], function () {
 		Route::get('sites/find', 'SiteFinderController@find');
+
+		Route::post('/', 'CollectionController@store')->name('collections.store');
 	});
 });
