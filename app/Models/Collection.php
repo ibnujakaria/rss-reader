@@ -11,7 +11,7 @@ class Collection extends Model
     
     public function sites()
     {
-    	return $this->hasMany('App\CollectionSite');
+    	return $this->belongsToMany('App\Models\Site', 'collection_sites');
     }
 
 

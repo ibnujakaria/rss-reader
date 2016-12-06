@@ -13,6 +13,11 @@ class CollectionController extends Controller
 		$this->middleware('auth');
 	}
     
+	public function index()
+	{
+		return auth()->user()->collections()->with('sites')->orderby('title', 'asc')->get();
+	}
+
 	/**
 	* @param $request
 	* 

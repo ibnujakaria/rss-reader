@@ -6,31 +6,7 @@ var home = new Vue({
 		addToCollectionVisibility: false,
 		selectedCollectionToAdd: null,
 		newCollectionTitle: null,
-		collections: [
-			{
-				id: 1,
-				title: 'Muslim',
-				sites: [
-					{
-						title: 'Muslim Afiyah'
-					},
-					{
-						title: 'Muslim.or.id'
-					},
-					{
-						title: 'Muslimah.or.id'
-					}
-				]
-			},
-			{
-				id: 2,
-				title: 'Bola'
-			},
-			{
-				id: 3,
-				title: 'Politik'
-			}
-		]
+		collections: []
 	},
 	methods: {
 		searchSites: function () {
@@ -38,8 +14,12 @@ var home = new Vue({
 				this.searchResult = response.body
 			})
 		},
+		getCollectionList: function () {
+			this.$http.get('/home/collections').then(function (response) {
+				this.collections = response.body
+			})
+		},
 		addToCollection: function () {
-			console.log("opoooo")
 			if (!this.addToCollectionVisibility) {
 				this.addToCollectionVisibility = true
 				return
@@ -51,7 +31,10 @@ var home = new Vue({
 				_token: csrf_token
 			}).then(function (response) {
 				console.log(response.body)
+				this.getCollectionList()
 			});
 		}
 	}
 });
+
+home.getCollectionList()

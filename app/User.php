@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
         return $query->whereEmail($email);
     }
+
+    public function collections()
+    {
+        return $this->hasMany('App\Models\Collection');
+    }
 }

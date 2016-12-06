@@ -9,7 +9,8 @@
 	<div style="border: 1px solid black; float: left; padding: 20px; width: 200px">
 		Collections
 		<ul>
-			<li v-for="collection in collections">
+			<span v-if="!collections.length">Loading...</span>
+			<li v-for="collection in collections" v-else>
 				<a href="">@{{collection.title}}</a>
 				<ul>
 					<li v-for="site in collection.sites"><a href="">@{{site.title}}</a></li>
