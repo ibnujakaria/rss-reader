@@ -3,6 +3,7 @@ var home = new Vue({
 	data: {
 		keyword: null,
 		searchResult: null,
+		searchSitesLoading: false,
 		addToCollectionVisibility: false,
 		selectedCollectionToAdd: null,
 		newCollectionTitle: null,
@@ -12,8 +13,10 @@ var home = new Vue({
 	},
 	methods: {
 		searchSites: function () {
+			this.searchSitesLoading = true
 			this.$http.get('/home/collections/sites/find', {params: {site: this.keyword}}).then(function (response) {
 				this.searchResult = response.body
+				this.searchSitesLoading = false
 			})
 		},
 		getCollectionList: function () {

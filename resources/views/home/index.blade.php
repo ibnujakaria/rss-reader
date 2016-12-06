@@ -22,6 +22,9 @@
 		<div style="border: 1px solid red; padding: 20px;">
 			<form @submit.prevent="searchSites">
 				<input type="text" placeholder="Search site" v-model="keyword">
+				<span v-if="searchSitesLoading">
+					Loading...
+				</span>
 			</form>
 			<div>
 				<table v-if="searchResult">
