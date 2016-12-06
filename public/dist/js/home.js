@@ -7,7 +7,8 @@ var home = new Vue({
 		selectedCollectionToAdd: null,
 		newCollectionTitle: null,
 		addToExistingCollection: 'yes',
-		collections: []
+		collections: [],
+		timeline: null
 	},
 	methods: {
 		searchSites: function () {
@@ -45,6 +46,17 @@ var home = new Vue({
 					this.getCollectionList()
 				})
 			}
+		},
+		getTimeLine: function (url) {
+			params = {}
+			
+			if (url) {
+				params = {site: url}
+			}
+
+			this.$http.get('/home/collections/sites', {params: params}).then(function (response) {
+				this.timeline = response.body
+			})
 		}
 	}
 });

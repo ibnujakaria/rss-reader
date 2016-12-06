@@ -15,8 +15,9 @@ class SiteController extends Controller
     	$this->middleware('auth');
     }
 
-    public function index($site = null)
+    public function index(Request $request)
     {
+        $site = $request->get('site');
     	$user = auth()->user();
 
     	if ($site) {

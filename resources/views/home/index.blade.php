@@ -13,7 +13,7 @@
 			<li v-for="collection in collections" v-else>
 				<a href="">@{{collection.title}}</a>
 				<ul>
-					<li v-for="site in collection.sites"><a href="">@{{site.title}}</a></li>
+					<li v-for="site in collection.sites"><a href="javascript:void(0)" @click="getTimeLine(site.url)">@{{site.title}}</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -65,8 +65,18 @@
 			</div>
 		</div>
 		<div style="border: 1px solid green; padding: 20px; margin-top: 20px">
-			<div v-for="article in articles">
-				@{{article}}
+			<div v-if="timeline && timeline.site">
+				<h1 style="color: green">@{{timeline.site.title}}</h1>
+				<hr>
+				<div v-for="article in timeline.site.articles">
+					<h3>@{{article.title}}</h3>
+					<small>@{{article.author}} | @{{article.pub_date}}</small>
+					<p>
+						@{{article.description}}
+						<a target="_blank" :href="article.link">See more</a>
+					</p>
+					<hr>
+				</div>
 			</div>
 		</div>
 	</div>
