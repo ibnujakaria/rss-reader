@@ -58,8 +58,6 @@
 								</div>
 							</div>
 
-							<h3>@{{addToExistingCollection}}</h3>
-
 							<button @click="addToCollection">Add to Collection</button>
 						</td>
 					</tr>
@@ -67,7 +65,9 @@
 			</div>
 		</div>
 		<div style="border: 1px solid green; padding: 20px; margin-top: 20px">
-			
+			<div v-for="article in articles">
+				@{{article}}
+			</div>
 		</div>
 	</div>
 </div>

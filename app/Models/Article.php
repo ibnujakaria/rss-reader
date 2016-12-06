@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-    //
+    
+
+    public function site()
+    {
+    	return $this->belongsTo("App\Models\Site");
+    }
 }

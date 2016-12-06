@@ -17,10 +17,12 @@ Route::group(['prefix' => 'home', 'namespace' => 'Home'], function () {
 	Route::get('/', 'HomeController@index')->name('home.index');
 
 	Route::group(['prefix' => 'collections', 'namespace' => 'Collections'], function () {
-		Route::get('sites/find', 'SiteFinderController@find');
+		Route::get('/sites/find', 'SiteFinderController@find');
 
 		Route::get('/', 'CollectionController@index')->name('collections.index');
 		Route::post('/', 'CollectionController@store')->name('collections.store');
 		Route::post('/add-site/{collection_id}/{site_id}', 'CollectionController@addSite')->name('collections.add-site');
+
+		Route::get('/sites/{site?}', 'SiteController@index')->name('collections.sites.index');
 	});
 });

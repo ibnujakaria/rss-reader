@@ -2,8 +2,12 @@
 
 namespace App;
 
+use App\Models\Site;
+use App\Models\Collection;
+use App\Models\CollectionSite;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class User extends Authenticatable
 {

@@ -7,6 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Site extends Model
 {
+
+    public function articles()
+    {
+        return $this->hasMany('App\Models\Article');
+    }
+
+    public function collections()
+    {
+        return $this->belongsToMany('App\Models\Collection', 'collection_sites');
+    }
+
     public static function findByFeedURL($url)
     {
     	$site = Site::where('feed_url', $url)->first();
@@ -36,5 +47,10 @@ class Site extends Model
     	}
 
     	return $site;
+    }
+
+    public function scopeUrl($query, $url)
+    {
+        return $query->where('url', 'like', "%{$url}");
     }
 }
