@@ -6,6 +6,7 @@ var home = new Vue({
 		addToCollectionVisibility: false,
 		selectedCollectionToAdd: null,
 		newCollectionTitle: null,
+		addToExistingCollection: 'yes',
 		collections: []
 	},
 	methods: {
@@ -25,13 +26,14 @@ var home = new Vue({
 				return
 			}
 
-			if (this.newCollectionTitle) {
+			if (this.addToExistingCollection === 'no') {
 				this.$http.post('/home/collections', {
 					collection_title: this.newCollectionTitle,
 					site_id: this.searchResult.id,
 					_token: csrf_token
 				}).then(function (response) {
-					console.log(response.body)
+					this.searchResult = null
+					this.newCollectionTitle = null
 					this.getCollectionList()
 				});
 			} else {
@@ -39,7 +41,7 @@ var home = new Vue({
 					_token: csrf_token
 				})
 				.then(function (response) {
-					console.log(response.body)
+					this.searchResult = null
 					this.getCollectionList()
 				})
 			}

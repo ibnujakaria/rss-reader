@@ -40,14 +40,25 @@
 					<tr>
 						<td colspan="2">
 							<div v-if="addToCollectionVisibility">
-								Select collection to add
-								<select v-model="selectedCollectionToAdd">
-									<option v-for="collection in collections" :value="collection.id">@{{collection.title}}</option>
-								</select> <br>
-
-								Or create a new collection <br>
-								<input type="text" v-model="newCollectionTitle">
+								<div>
+									<div>
+										<input type="radio" v-model="addToExistingCollection" value="yes">
+										Select collection to add
+									</div>
+									<select v-model="selectedCollectionToAdd">
+										<option v-for="collection in collections" :value="collection.id">@{{collection.title}}</option>
+									</select>
+								</div>
+								<div>
+									<div>
+										<input type="radio" v-model="addToExistingCollection" value="no">
+										Or create a new collection
+									</div>
+									<input type="text" v-model="newCollectionTitle">
+								</div>
 							</div>
+
+							<h3>@{{addToExistingCollection}}</h3>
 
 							<button @click="addToCollection">Add to Collection</button>
 						</td>
