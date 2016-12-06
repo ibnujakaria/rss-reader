@@ -74,8 +74,8 @@
 				<div v-for="article in timeline.site.articles">
 					<h3>@{{article.title}}</h3>
 					<small>@{{article.author}} | @{{article.pub_date}}</small>
+					<p v-html="article.description"></p>
 					<p>
-						@{{article.description}}
 						<a target="_blank" :href="article.link">See more</a>
 					</p>
 					<hr>
