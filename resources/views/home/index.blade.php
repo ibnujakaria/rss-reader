@@ -99,6 +99,9 @@
 					</p>
 					<hr>
 				</div>
+				<div style="text-align: center">
+					<button @click="getNextTimeLine">Load More</button>
+				</div>
 			</div>
 		</div>
 	</div>

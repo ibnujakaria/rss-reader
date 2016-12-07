@@ -62,6 +62,21 @@ var home = new Vue({
 				this.timeline = response.body
 			})
 		},
+		getNextTimeLine: function () { // this to get the next page of the timeline
+			if (this.timeline.articles) {
+				if (this.timeline.articles.current_page === this.timeline.articles.last_page) {
+					return false;
+				}
+
+				var oldData = this.timeline.articles.data
+				var params = {page: this.timeline.articles.current_page + 1}
+
+				this.$http.get('/home/collections/sites', {params: params}).then(function (response) {
+					this.timeline = response.body
+					this.timeline.articles.data = oldData.concat(this.timeline.articles.data)
+				})
+			}
+		}, 
 		saveItLater: function (article_id) {
 			this.$http.post('/home/collections/sites/save-it-later/' + article_id, {
 				_token: csrf_token
