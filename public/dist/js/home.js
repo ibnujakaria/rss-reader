@@ -77,5 +77,6 @@ var home = new Vue({
 	}
 });
 
+home.getTimeLine()
 home.getCollectionList()
 home.getSavedArticles()

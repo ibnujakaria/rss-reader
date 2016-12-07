@@ -30,8 +30,8 @@ class SiteController extends Controller
 
             return response()->json(compact('site'));
     	} else {
-            $articles = Article::whereHas('site', function ($query) use ($site) {
-                $query->whereHas('collections', function ($query) use ($site) {
+            $articles = Article::whereHas('site', function ($query) use ($url) {
+                $query->whereHas('collections', function ($query) use ($url) {
                     $query->whereHas('user', function ($query) {
                         $query->whereId(auth()->id());
                     });

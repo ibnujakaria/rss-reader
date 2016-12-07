@@ -86,6 +86,20 @@
 					<hr>
 				</div>
 			</div>
+
+			<div v-if="timeline && timeline.articles">
+				<h1 style="color: green">Today</h1>
+				<div v-for="article in timeline.articles.data">
+					<h3>@{{article.title}}</h3>
+					<small>@{{article.author}} | @{{article.pub_date}}</small>
+					<p v-html="article.description"></p>
+					<p>
+						<a target="_blank" :href="article.link">See more</a>
+						<a href="javascript:void(0)" @click="saveItLater(article.id)">Save it later</a>
+					</p>
+					<hr>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
