@@ -66,11 +66,16 @@ var home = new Vue({
 			this.$http.post('/home/collections/sites/save-it-later/' + article_id, {
 				_token: csrf_token
 			}).then(function (response) {
-				console.log(response)
+				this.getSavedArticles()
 			})
 		},
-		getSavedArticles: function() {}
+		getSavedArticles: function () {
+			this.$http.get('/home/collections/sites/saved-articles').then(function (response) {
+				this.savedArticles = response.body.articles
+			})
+		}
 	}
 });
 
 home.getCollectionList()
+home.getSavedArticles()

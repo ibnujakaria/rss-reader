@@ -9,7 +9,7 @@
 	<div style="border: 1px solid black; float: left; padding: 20px; width: 200px">
 		Saved Articles
 		<ul>
-			<li v-for="article in savedArticles"><a href="">@{{article.title}}</a></li>
+			<li v-for="article in savedArticles"><a href="javascript:void(0)">@{{article.title}}</a></li>
 		</ul>
 		Collections
 		<ul>
