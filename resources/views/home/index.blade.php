@@ -77,6 +77,7 @@
 					<p v-html="article.description"></p>
 					<p>
 						<a target="_blank" :href="article.link">See more</a>
+						<a href="javascript:void(0)" @click="saveItLater(article.id)">Save it later</a>
 					</p>
 					<hr>
 				</div>

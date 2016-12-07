@@ -60,6 +60,13 @@ var home = new Vue({
 			this.$http.get('/home/collections/sites', {params: params}).then(function (response) {
 				this.timeline = response.body
 			})
+		},
+		saveItLater: function (article_id) {
+			this.$http.post('/home/collections/sites/save-it-later/' + article_id, {
+				_token: csrf_token
+			}).then(function (response) {
+				console.log(response)
+			})
 		}
 	}
 });

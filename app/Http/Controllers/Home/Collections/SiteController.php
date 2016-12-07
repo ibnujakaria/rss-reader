@@ -45,4 +45,17 @@ class SiteController extends Controller
             return response()->json(compact('articles')); 
     	}
     }
+
+    public function saveItLater($article_id)
+    {
+        $article = Article::findOrFail($article_id); # this ensures that the id exists
+
+        # this ensures that the article has not been saved
+        if (auth()->user()->articles()->wherePivot('type', 'saved_to_read_later')->find($article_id)) {
+            return response()->json(['already added'], 500);
+        }
+        auth()->user()->articles()->attach($article->id, ['type' => 'saved_to_read_later']);
+
+        return response()->json('success');
+    }
 }
