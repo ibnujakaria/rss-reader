@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home\Collections;
 
+use App\Models\Site;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,20 +18,15 @@ class SiteController extends Controller
 
     public function index(Request $request)
     {
-        $site = $request->get('site');
+        $url = $request->get('site');
     	$user = auth()->user();
 
-    	if ($site) {
-    		$entries = $user->collections()->whereHas('sites', function ($query) use ($site) {
-    			$query->url($site);
-    		})->with(['sites' => function ($query) use ($site) {
-                $query->url($site);
-                $query->with(['articles' => function ($query) use ($site) {
-                    $query->orderby('pub_date', 'desc');
-                }]);
-    		}])->first();
+    	if ($url) {
+    		$site = Site::url($url)->firstOrFail();
 
-            $site = $entries->sites[0];
+            $site->load(['articles' => function ($query) {
+                $query->orderby('pub_date', 'desc')->paginate(15);
+            }]);
 
             return response()->json(compact('site'));
     	} else {
@@ -40,7 +36,7 @@ class SiteController extends Controller
                         $query->whereId(auth()->id());
                     });
                 });
-            })->orderby('pub_date', 'desc')->get();
+            })->orderby('pub_date', 'desc')->paginate(15);
 
             return response()->json(compact('articles')); 
     	}
