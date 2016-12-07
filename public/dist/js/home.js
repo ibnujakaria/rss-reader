@@ -9,6 +9,7 @@ var home = new Vue({
 		newCollectionTitle: null,
 		addToExistingCollection: 'yes',
 		collections: [],
+		savedArticles: [],
 		timeline: null
 	},
 	methods: {
@@ -67,7 +68,8 @@ var home = new Vue({
 			}).then(function (response) {
 				console.log(response)
 			})
-		}
+		},
+		getSavedArticles: function() {}
 	}
 });
 

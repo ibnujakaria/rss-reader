@@ -51,10 +51,10 @@ class SiteController extends Controller
         $article = Article::findOrFail($article_id); # this ensures that the id exists
 
         # this ensures that the article has not been saved
-        if (auth()->user()->articles()->wherePivot('type', 'saved_to_read_later')->find($article_id)) {
+        if (auth()->user()->savedArticles()->where('article_id', $article_id)->first()) {
             return response()->json(['already added'], 500);
         }
-        auth()->user()->articles()->attach($article->id, ['type' => 'saved_to_read_later']);
+        auth()->user()->savedArticles()->attach($article->id, ['type' => 'saved_to_read_later']);
 
         return response()->json('success');
     }

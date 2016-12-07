@@ -7,6 +7,10 @@
 	<h2>Welcome to Home</h2>
 
 	<div style="border: 1px solid black; float: left; padding: 20px; width: 200px">
+		Saved Articles
+		<ul>
+			<li v-for="article in savedArticles"><a href="">@{{article.title}}</a></li>
+		</ul>
 		Collections
 		<ul>
 			<span v-if="!collections.length">Loading...</span>
