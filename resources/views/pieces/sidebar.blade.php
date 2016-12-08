@@ -1,10 +1,31 @@
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-  <form role="search">
+  @if (@$app_id === 'home')
+  <form @submit.prevent="searchSites">
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Search">
+      <input type="text" class="form-control" placeholder="Search site" v-model="keyword">
+      <span v-if="searchSitesLoading">
+        Loading...
+      </span>
     </div>
   </form>
+  @endif
   <ul class="nav menu">
+    @if (@$app_id === 'home')
+      Saved Articles
+      <ul>
+        <li v-for="article in savedArticles"><a href="javascript:void(0)">@{{article.title}}</a></li>
+      </ul>
+      Collections
+      <ul>
+        <span v-if="!collections.length">Loading...</span>
+        <li v-for="collection in collections" v-else>
+          <a href="">@{{collection.title}}</a>
+          <ul>
+            <li v-for="site in collection.sites"><a href="javascript:void(0)" @click="getTimeLine(site.url)">@{{site.title}}</a></li>
+          </ul>
+        </li>
+      </ul>
+    @endif
     <li class="active"><a href="index.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
     <li><a href="widgets.html"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Widgets</a></li>
     <li><a href="charts.html"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Charts</a></li>
