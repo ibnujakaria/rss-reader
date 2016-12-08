@@ -41,8 +41,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Collection');
     }
 
-    public function articles()
+    public function savedArticles()
     {
-        return $this->belongsToMany('App\Models\Article', 'user_articles')->withPivot('type')->withTimestamps();
+        return $this->belongsToMany('App\Models\Article', 'user_articles')->wherePivot('type', 'saved_to_read_later')->withTimestamps();
     }
 }
