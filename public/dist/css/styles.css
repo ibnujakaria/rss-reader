@@ -327,7 +327,7 @@ a.bg-danger:hover {
 	margin: 0 -5px;
 }
 
-.panel-footer .input-group-btn:last-child>.btn, 
+.panel-footer .input-group-btn:last-child>.btn,
 .panel-footer .input-group-btn:last-child>.btn-group {
 	margin: 0;
 }
@@ -349,8 +349,8 @@ a.bg-danger:hover {
 .panel-blue .panel-body p,
 .panel-teal .panel-body p,
 .panel-orange .panel-body p,
-.panel-red .panel-body p { 
-	color: #fff; 
+.panel-red .panel-body p {
+	color: #fff;
 	color: rgba(255, 255, 255, .8);
 }
 
@@ -364,8 +364,8 @@ a.bg-danger:hover {
 .panel-blue .text-muted,
 .panel-teal .text-muted,
 .panel-orange .text-muted,
-.panel-red .text-muted { 
-	color: rgba(255, 255, 255, .5); 
+.panel-red .text-muted {
+	color: rgba(255, 255, 255, .5);
 }
 
 .dark-overlay {
@@ -550,7 +550,7 @@ a.bg-danger:hover {
 		margin: 0;
 		padding: 0;
 		overflow-x: hidden;
-		overflow-y: auto; 
+		overflow-y: auto;
 		background-color: #fff;
 		box-shadow: 1px 0px 10px rgba(0, 0, 0, .05);
 	}
@@ -559,7 +559,7 @@ a.bg-danger:hover {
 	}
 }
 
-.sidebar ul.nav a:hover, 
+.sidebar ul.nav a:hover,
 .sidebar ul.nav li.parent ul li a:hover {
 	text-decoration: none;
 	background-color: #e9ecf2;
@@ -737,17 +737,17 @@ h1.page-header {
 
 /*Todo List Widget*/
 
-.todo-list-item .glyphicon { 
-	margin-right:5px; 
-	color: #9fadbb; 
+.todo-list-item .glyphicon {
+	margin-right:5px;
+	color: #9fadbb;
 }
 
-.todo-list-item .glyphicon:hover { 
-	margin-right:5px; 
-	color: #1b3548; 
+.todo-list-item .glyphicon:hover {
+	margin-right:5px;
+	color: #1b3548;
 }
 
-.todo-list { 
+.todo-list {
 	padding: 0;
 	margin: -15px;
 	background: #fff;
@@ -758,14 +758,14 @@ h1.page-header {
 	margin: 0;
 }
 
-.todo-list .checkbox { 
-	display:inline-block; 
+.todo-list .checkbox {
+	display:inline-block;
 	margin: 0px;
 }
 
-.panel-body input[type=checkbox]:checked + label { 
+.panel-body input[type=checkbox]:checked + label {
 	text-decoration: line-through;
-	color: #777; 
+	color: #777;
 }
 
 .todo-list-item {
@@ -929,11 +929,194 @@ h1.page-header {
 	overflow: scroll;
 }
 
+.fixed-bg {
+
+	background-image: url("http://media.idownloadblog.com/wp-content/uploads/2014/11/swiss-mountain-hill-alps-nature-9-wallpaper.jpg");
+	min-height: 910px;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.card{
+	position: absolute;
+	top: 30%;
+	left: 40%;
+	background-color: #34495E;
+	width: 400px;
+	height: 500px;
+
+}
+
+#iconrss{
+	height: 140px;
+	width: 140px;
+}
+
+#rss{
+	font-size: 30px;
+	color: #34495E;
+	position: absolute;
+	top: 23%;
+	left: 47.2%;
+
+}
+.logo{
+	position: absolute;
+	top: 7%;
+	left: 47%;
+}
 
 
+.btn-acount{
+    background-color: #34495E;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+		border: 2px solid white;
+		position: absolute;
+		left: 20%;
+		width: 60%;
+}
+
+.btn-custom {
+	padding: 15px 32px;
+	margin: 4px 2px;
+	font-size: 16px;
+  background-color: #34495E;
+  border-color: #34495E;
+	border: 2px solid white;
+	width: 60%;
+	position: absolute;
+	left: 20%;
+	top: 10%;
+	height: 10%;
+}
+.btn-custom:hover,
+.btn-custom:focus,
+.btn-custom:active,
+.btn-custom.active {
+	border: 2px solid white;
+  background-color: #2b3c4e;
+
+}
+.btn-custom.disabled:hover,
+.btn-custom.disabled:focus,
+.btn-custom.disabled:active,
+.btn-custom.disabled.active,
+.btn-custom[disabled]:hover,
+.btn-custom[disabled]:focus,
+.btn-custom[disabled]:active,
+.btn-custom[disabled].active,
+fieldset[disabled] .btn-custom:hover,
+fieldset[disabled] .btn-custom:focus,
+fieldset[disabled] .btn-custom:active,
+fieldset[disabled] .btn-custom.active {
+	border: 2px solid white;
+  background-color: #34495E;
+}
+
+.btntwitter{
+	top: 150px;
+}
+.btngoogle{
+	top: 250px;
+}
+
+#gplus{
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	height: 35px;
+	width: 35px;
+}
+
+#help{
+	position: absolute;
+	top: 80%;
+	left: 30%;
+}
 
 
+/*slide show effect*/
 
+* {box-sizing:border-box}
+body {font-family: Verdana,sans-serif;}
+.mySlides {display:none}
 
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
 
+/* Caption text */
+.text {
+  color: black;
+  font-size: 40px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
 
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 13px;
+  width: 13px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+.pict{
+  height: 600px;
+  width: 1500px;
+  position: absolute;
+  left: -180px;
+}
