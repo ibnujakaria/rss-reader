@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 	<title>@yield('title')</title>
+
 
 	<link href="{{ asset('dist/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('dist/css/datepicker3.css') }}" rel="stylesheet">
 	<link href="{{ asset('dist/css/styles.css') }}" rel="stylesheet">
+	@yield('css')
 
 	<!--Icons-->
 	<script src="{{ asset('dist/js/lumino.glyphs.js') }}"></script>
@@ -16,12 +19,11 @@
 		@if (auth()->check())
 		@include('pieces.sidebar')
 		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-			@else
-				<div >
-					
-			@endif
 			@yield('body')
 		</div>
+		@else
+		@yield('body')
+		@endif
 	</div>
 	<script src="https://unpkg.com/vue/dist/vue.js"></script>
 	<script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
