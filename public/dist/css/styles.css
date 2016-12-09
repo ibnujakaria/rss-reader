@@ -586,7 +586,7 @@ a.bg-danger:hover {
 }
 
 .sidebar ul.nav ul.children li a {
-	height: 40px;
+	height: auto;
 	background: #f9f9f9;
 	color: #30a5ff!important;
 }
@@ -929,80 +929,34 @@ h1.page-header {
 	overflow: scroll;
 }
 
-.fixed-bg {
-
-	background-image: url("http://media.idownloadblog.com/wp-content/uploads/2014/11/swiss-mountain-hill-alps-nature-9-wallpaper.jpg");
-	min-height: 910px;
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-
-.card{
-	position: absolute;
-	top: 30%;
-	left: 40%;
-	background-color: #34495E;
-	width: 400px;
-	height: 500px;
-
-}
-
-#iconrss{
-	height: 140px;
-	width: 140px;
-}
-
-#rss{
-	font-size: 30px;
-	color: #34495E;
-	position: absolute;
-	top: 23%;
-	left: 47.2%;
-
-}
-.logo{
-	position: absolute;
-	top: 7%;
-	left: 47%;
-}
-
-
-.btn-acount{
-    background-color: #34495E;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-		border: 2px solid white;
-		position: absolute;
-		left: 20%;
-		width: 60%;
-}
-
 .btn-custom {
-	padding: 15px 32px;
+	/*padding: 15px 32px;
 	margin: 4px 2px;
-	font-size: 16px;
+	font-size: 16px;*/
   background-color: #34495E;
   border-color: #34495E;
 	border: 2px solid white;
-	width: 60%;
+	color: white;
+	display: block;
+	margin: auto;
+	width: 20vw;
+	height: auto;
+	font-size: 20px;
+
+	/*width: 60%;
 	position: absolute;
 	left: 20%;
 	top: 10%;
-	height: 10%;
+	height: 10%;*/
 }
+
 .btn-custom:hover,
 .btn-custom:focus,
 .btn-custom:active,
 .btn-custom.active {
 	border: 2px solid white;
   background-color: #2b3c4e;
+	color: white;
 
 }
 .btn-custom.disabled:hover,
@@ -1021,33 +975,69 @@ fieldset[disabled] .btn-custom.active {
   background-color: #34495E;
 }
 
-.btntwitter{
-	top: 150px;
-}
-.btngoogle{
-	top: 250px;
+.fixed-bg {
+	background-image: url("http://media.idownloadblog.com/wp-content/uploads/2014/11/swiss-mountain-hill-alps-nature-9-wallpaper.jpg");
+	min-height: 92.5vh;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
-#gplus{
-	position: absolute;
-	top: 4px;
-	left: 4px;
-	height: 35px;
-	width: 35px;
+#iconrss{
+	display: block;
+	margin: auto;
+	max-width: 100px;
+	height: auto;
+}
+
+#textrss{
+	font-size: 30px;
+	color: #34495E;
+	text-align: center;
+	margin: auto;
+}
+#logo{
+	padding-top: 10vh;
+}
+
+.card{
+	background-color: #34495E;
+	width: 30vw;
+	height: 45vh;
+	margin: auto;
+	padding: 50px;
+}
+
+.btn-acount{
+    background-color: #34495E;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+		border: 2px solid white;
+		position: absolute;
+		left: 20%;
+		width: 60%;
+}
+
+#pemisah{
+	height: 20px;
 }
 
 #help{
-	position: absolute;
-	top: 80%;
-	left: 30%;
+	text-align: center;
 }
 
 
 /*slide show effect*/
-
+/*
 * {box-sizing:border-box}
 body {font-family: Verdana,sans-serif;}
-.mySlides {display:none}
+.mySlides {display:none}*/
 
 /* Slideshow container */
 .slideshow-container {
