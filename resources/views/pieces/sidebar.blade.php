@@ -11,8 +11,18 @@
   @endif
   <ul class="nav menu">
     @if (@$app_id === 'home')
+    <li class="parent">
+      <a href="javascript:void(0)" @click="getTimeLine()">
+        All
+      </a>
+    </li>
+    <li>
+      <a href="javascript:void(0)" @click="getTimeLine({type: 'today'})">
+        Today
+      </a>
+    </li>
     <li class="parent ">
-      <a href="#">
+      <a href="javascript:void(0)">
         <span data-toggle="collapse" href="#savArt"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span>
         Saved Articles
       </a>
@@ -25,20 +35,20 @@
       </ul>
     </li>
     <li class="parent ">
-      <a href="#">
+      <a href="javascript:void(0)">
         <span data-toggle="collapse" href="#collect"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span>
         Collections
       </a>
       <ul class="children collapse" id="collect">
         <span v-if="!collections.length">Loading...</span>
         <li v-for="collection in collections" v-else class="parent ">
-          <a href="">
+          <a href="javascript:void(0)">
             <span data-toggle="collapse" href="#collection"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span>
             @{{collection.title}}
           </a>
           <ul class="children collapse" id="collection">
             <li v-for="site in collection.sites">
-              <a href="javascript:void(0)" @click="getTimeLine(site.url)">@{{site.title}}</a>
+              <a href="javascript:void(0)" @click="getTimeLine({url: site.url})">@{{site.title}}</a>
             </li>
           </ul>
         </li>
