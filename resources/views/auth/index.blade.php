@@ -12,8 +12,12 @@
 	<div id="logo">
 			<img id="iconrss" src="{{asset('dist/image/logo.png')}}" alt="" />
 			<div id="textrss">
-				<label>Feed Me!</label>
+				Feed Me!
 			</div>
+	</div>
+
+	<div id="pemisah">
+
 	</div>
 
 	<div class="card">
