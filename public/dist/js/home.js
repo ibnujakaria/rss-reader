@@ -54,8 +54,13 @@ var home = new Vue({
 		getTimeLine: function (options) {
 			params = {}
 			
-			if (options && options.url) {
-				params = {site: options.url}
+			if (options) {
+				if (options.url)
+					params = {site: options.url}
+				if (options.type){
+					params = options;
+					this.timelineLabel = options.type
+				}
 			}
 
 			this.$http.get('/home/collections/sites', {params: params}).then(function (response) {

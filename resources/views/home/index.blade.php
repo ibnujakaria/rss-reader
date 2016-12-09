@@ -65,7 +65,7 @@
 			</div>
 
 			<div v-if="timeline && timeline.articles">
-				<h1 style="color: green">Today</h1>
+				<h1 style="color: green; text-transform: capitalize;">@{{timelineLabel}}</h1>
 				<div v-for="article in timeline.articles.data">
 					<h3>@{{article.title}}</h3>
 					<small>@{{article.author}} | @{{article.pub_date}}</small>
@@ -76,8 +76,11 @@
 					</p>
 					<hr>
 				</div>
-				<div style="text-align: center">
+				<div style="text-align: center" v-if="timeline.articles.length">
 					<button @click="getNextTimeLine">Load More</button>
+				</div>
+				<div v-else>
+					There is no entries.
 				</div>
 			</div>
 		</div>

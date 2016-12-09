@@ -12,7 +12,7 @@
   <ul class="nav menu">
     @if (@$app_id === 'home')
     <li class="parent">
-      <a href="javascript:void(0)" @click="getTimeLine()">
+      <a href="javascript:void(0)" @click="getTimeLine({type: 'all'})">
         All
       </a>
     </li>
