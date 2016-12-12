@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home\Collections;
 
+use Carbon\Carbon;
 use App\Models\Site;
 use App\Models\Article;
 use Illuminate\Http\Request;
@@ -36,7 +37,13 @@ class SiteController extends Controller
                         $query->whereId(auth()->id());
                     });
                 });
-            })->orderby('pub_date', 'desc')->paginate(15);
+            });
+
+            if ($request->has('type') and $request->type === 'today') {
+                $articles->where('pub_date', '>=', Carbon::today()->toDateString());
+            }
+
+            $articles = $articles->orderby('pub_date', 'desc')->paginate(15);
 
             return response()->json(compact('articles')); 
     	}

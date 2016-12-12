@@ -11,6 +11,18 @@
   @endif
   <ul class="nav menu">
     @if (@$app_id === 'home')
+    <li class="parent">
+      <a href="javascript:void(0)" @click="getTimeLine({type: 'all'})">
+        <svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"/></svg>
+        All
+      </a>
+    </li>
+    <li>
+      <a href="javascript:void(0)" @click="getTimeLine({type: 'today'})">
+        <svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg>
+        Today
+      </a>
+    </li>
     <li class="parent ">
       <a data-toggle="collapse" href="#savArt">
         <span><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span>
@@ -19,6 +31,7 @@
       <ul class="children collapse" id="savArt">
         <li v-for="article in savedArticles">
           <a href="javascript:void(0)">
+            <svg class="glyph stroked arrow right"><use xlink:href="#stroked-arrow-right"/></svg>
             @{{article.title}}
           </a>
         </li>
@@ -38,13 +51,16 @@
           </a>
           <ul class="children collapse" :id="'collect-'+index">
             <li v-for="site in collection.sites">
-              <a href="javascript:void(0)" @click="getTimeLine(site.url)">@{{site.title}}</a>
+              <a href="javascript:void(0)" @click="getTimeLine({url: site.url})">
+                <svg class="glyph stroked arrow right"><use xlink:href="#stroked-arrow-right"/></svg>
+                @{{site.title}}
+              </a>
             </li>
           </ul>
         </li>
       </ul>
     </li>
     @endif
-    
+
 
 </div><!--/.sidebar-->

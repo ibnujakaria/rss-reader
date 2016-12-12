@@ -51,11 +51,16 @@ var home = new Vue({
 				})
 			}
 		},
-		getTimeLine: function (url) {
+		getTimeLine: function (options) {
 			params = {}
 			
-			if (url) {
-				params = {site: url}
+			if (options) {
+				if (options.url)
+					params = {site: options.url}
+				if (options.type){
+					params = options;
+					this.timelineLabel = options.type
+				}
 			}
 
 			this.$http.get('/home/collections/sites', {params: params}).then(function (response) {
