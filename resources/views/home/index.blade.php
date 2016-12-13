@@ -76,7 +76,7 @@
 					</p>
 					<hr>
 				</div>
-				<div style="text-align: center" v-if="timeline.articles.length">
+				<div style="text-align: center" v-if="timeline.articles.data.length">
 					<button @click="getNextTimeLine">Load More</button>
 				</div>
 				<div v-else>
