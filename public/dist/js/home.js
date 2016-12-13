@@ -91,12 +91,12 @@ var home = new Vue({
 		},
 		getSavedArticles: function () {
 			this.$http.get('/home/collections/sites/saved-articles').then(function (response) {
-				this.savedArticles = response.body.articles
+				this.timelineLabel = 'Saved Articles'
+				this.timeline = response.body
 			})
 		}
 	}
 });
 
-home.getTimeLine()
+home.getTimeLine({type: 'today'})
 home.getCollectionList()
-home.getSavedArticles()

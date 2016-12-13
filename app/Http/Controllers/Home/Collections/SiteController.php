@@ -64,7 +64,7 @@ class SiteController extends Controller
 
     public function getArticleSavedArticles()
     {
-        $articles = auth()->user()->savedArticles()->orderby('user_articles.id', 'desc')->get();
+        $articles = auth()->user()->savedArticles()->orderby('user_articles.id', 'desc')->paginate(15);
         return response()->json(compact('articles'));
     }
 }
