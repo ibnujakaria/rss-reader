@@ -21,7 +21,7 @@
 						<td>Description</td>
 						<td>@{{searchResult.description}}</td>
 					</tr>
-					<tr>
+					<tr v-if="!searchResult.is_already_added">
 						<td colspan="2">
 							<div v-if="addToCollectionVisibility">
 								<div>
