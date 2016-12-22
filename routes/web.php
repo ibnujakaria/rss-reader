@@ -26,5 +26,6 @@ Route::group(['prefix' => 'home', 'namespace' => 'Home'], function () {
 		Route::get('/sites', 'SiteController@index')->name('collections.sites.index');
 		Route::post('sites/save-it-later/{article_id}', 'SiteController@saveItLater')->name('collections.sites.save-it-later');
 		Route::get('sites/saved-articles', 'SiteController@getArticleSavedArticles')->name('collections.sites.saved-articles');
+		Route::get('sites/saved-articles/count', 'SiteController@getCountSavedArticles');
 	});
 });

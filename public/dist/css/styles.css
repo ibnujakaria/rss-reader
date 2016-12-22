@@ -1035,6 +1035,18 @@ fieldset[disabled] .btn-custom.active {
 	text-align: center;
 }
 
+.label-count {
+  font-size: 10px;
+  line-height: 15px;
+  background-color: #000;
+	color: white;
+  padding: 0 4px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+}
+
 
 /*slide show effect*/
 /*

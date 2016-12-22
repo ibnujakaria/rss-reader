@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 
 class SiteController extends Controller
 {
-    
+
 
     public function __construct()
     {
@@ -45,7 +45,7 @@ class SiteController extends Controller
 
             $articles = $articles->orderby('pub_date', 'desc')->paginate(15)->appends($request->all());
 
-            return response()->json(compact('articles')); 
+            return response()->json(compact('articles'));
     	}
     }
 
@@ -66,5 +66,11 @@ class SiteController extends Controller
     {
         $articles = auth()->user()->savedArticles()->orderby('user_articles.id', 'desc')->paginate(15);
         return response()->json(compact('articles'));
+    }
+
+    public function getCountSavedArticles()
+    {
+      $articlesCount = auth()->user()->savedArticles()->orderby('user_articles.id', 'desc')->count();
+      return response()->json($articlesCount);
     }
 }
