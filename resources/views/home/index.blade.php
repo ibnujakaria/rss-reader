@@ -3,86 +3,114 @@
 @section('title', 'RSS Reader | Home')
 
 @section('body')
-<div>
-	<h2>Welcome to Home</h2>
-	<div style="float: left; margin-left: 20px; width: 800px">
-		<div style="border: 1px solid red; padding: 20px;">
-			<div>
-				<table v-if="searchResult">
-					<tr>
-						<td>Title</td>
-						<td>@{{searchResult.title}}</td>
-					</tr>
-					<tr>
-						<td>URL</td>
-						<td><a :href="searchResult.url">@{{searchResult.url}}</a></td>
-					</tr>
-					<tr>
-						<td>Description</td>
-						<td>@{{searchResult.description}}</td>
-					</tr>
-					<tr>
-						<td colspan="2">
-							<div v-if="addToCollectionVisibility">
-								<div>
-									<div>
-										<input type="radio" v-model="addToExistingCollection" value="yes">
-										Select collection to add
-									</div>
-									<select v-model="selectedCollectionToAdd">
-										<option v-for="collection in collections" :value="collection.id">@{{collection.title}}</option>
-									</select>
-								</div>
-								<div>
-									<div>
-										<input type="radio" v-model="addToExistingCollection" value="no">
-										Or create a new collection
-									</div>
-									<input type="text" v-model="newCollectionTitle">
-								</div>
-							</div>
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header" v-if="timeline && timeline.site">Welcome to Home | @{{timeline.site.title}}</h1>
+		<h1 class="page-header" v-else-if="timelineLabel">Welcome to Home | @{{timelineLabel}}</h1>
+		<h1 class="page-header" v-else>Welcome to Home</h1>
+	</div>
+</div><!--/.row-->
 
-							<button @click="addToCollection">Add to Collection</button>
-						</td>
-					</tr>
-				</table>
+<div class="col-xs-12 col-md-6 col-lg-9" v-if="searchResult">
+	<div class="panel panel-primary">
+		<div class="panel-heading dark-overlay">Hasil Pencarian</div>
+		<div class="panel-body">
+			<div class="header">
+				<strong class="primary-font">Title</strong>
+			</div>
+			<p>
+				@{{searchResult.title}}
+			</p>
+			<div class="header">
+				<strong class="primary-font">URL</strong>
+			</div>
+			<p>
+				<a :href="searchResult.url">@{{searchResult.url}}</a>
+			</p>
+			<div class="header">
+				<strong class="primary-font">Description</strong>
+			</div>
+			<p>
+				@{{searchResult.description}}
+			</p>
+			<div class="form-group" v-if="addToCollectionVisibility">
+				<div class="radio">
+					<label>
+						<input type="radio" v-model="addToExistingCollection" value="yes">
+						Select collection to add
+					</label>
+				</div>
+				<select class="form-control" v-model="selectedCollectionToAdd">
+					<option v-for="collection in collections" :value="collection.id">@{{collection.title}}</option>
+				</select>
+				<div class="radio">
+					<label>
+						<input type="radio" v-model="addToExistingCollection" value="no">
+						Or create a new collection
+					</label>
+				</div>
+				<input class="form-control" type="text" v-model="newCollectionTitle">
+			</div>
+			<button class="btn btn-primary" @click="addToCollection">Add to Collection</button>
+		</div>
+	</div>
+</div>
+
+<div class="col-xs-12 col-md-6 col-lg-9">
+	<!-- untuk websitenya -->
+	<div v-if="timeline && timeline.site">
+		<div class="panel panel-primary" v-for="article in timeline.site.articles">
+			<div class="panel-heading" style="background:#336E7B;">@{{article.title}}</div>
+			<div class="panel-body">
+				<small class="text-muted">@{{article.author}} | @{{article.pub_date}}</small>
+				<p v-html="article.description"></p>
+			</div>
+			<div class="panel-footer">
+				<p>
+					<span class="glyphicon glyphicon-ok"></span>
+					<a target="_blank" :href="article.link"> See more </a>
+					<span class="glyphicon glyphicon-time"></span>
+					<a href="javascript:void(0)" @click="saveItLater(article.id)"> Save it later</a>
+				</p>
 			</div>
 		</div>
-		<div style="border: 1px solid green; padding: 20px; margin-top: 20px">
-			<div v-if="timeline && timeline.site">
-				<h1 style="color: green">@{{timeline.site.title}}</h1>
-				<hr>
-				<div v-for="article in timeline.site.articles">
-					<h3>@{{article.title}}</h3>
-					<small>@{{article.author}} | @{{article.pub_date}}</small>
-					<p v-html="article.description"></p>
-					<p>
-						<a target="_blank" :href="article.link">See more</a>
-						<a href="javascript:void(0)" @click="saveItLater(article.id)">Save it later</a>
-					</p>
-					<hr>
-				</div>
-			</div>
+	</div>
 
-			<div v-if="timeline && timeline.articles">
-				<h1 style="color: green; text-transform: capitalize;">@{{timelineLabel}}</h1>
-				<div v-for="article in timeline.articles.data">
-					<h3>@{{article.title}}</h3>
-					<small>@{{article.author}} | @{{article.pub_date}}</small>
-					<p v-html="article.description"></p>
-					<p>
-						<a target="_blank" :href="article.link">See more</a>
-						<a href="javascript:void(0)" @click="saveItLater(article.id)">Save it later</a>
-					</p>
-					<hr>
-				</div>
-				<div style="text-align: center" v-if="timeline.articles.length">
-					<button @click="getNextTimeLine">Load More</button>
-				</div>
-				<div v-else>
-					There is no entries.
-				</div>
+	<!-- untuk semua article -->
+	<div v-if="timeline && timeline.articles">
+		<div class="panel panel-primary" v-for="article in timeline.articles.data">
+			<div class="panel-heading" style="background:#336E7B;">@{{article.title}}</div>
+			<div class="panel-body">
+				<small class="text-muted">@{{article.author}} | @{{article.pub_date}}</small>
+				<p v-html="article.description"></p>
 			</div>
+			<div class="panel-footer">
+				<p>
+					<span class="glyphicon glyphicon-ok"></span>
+					<a target="_blank" :href="article.link"> See more </a>
+					<span class="glyphicon glyphicon-time"></span>
+					<a href="javascript:void(0)" @click="saveItLater(article.id)"> Save it later</a>
+				</p>
+			</div>
+		</div>
+		<div style="text-align: center" v-if="timeline.articles.length">
+			<button class="btn btn-link" @click="getNextTimeLine">Load More</button>
+		</div>
+		<div v-else>
+			There is no entries.
+		</div>
+	</div>
+</div>
+
+<div class="col-xs-12 col-md-6 col-lg-3">
+	<div class="panel panel-primary">
+		<div class="panel-heading" style="background:#34495E;">
+			YOU MIGHT ALSO LIKE
+		</div>
+		<div class="panel-body">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
 		</div>
 	</div>
 </div>
@@ -94,4 +122,3 @@
 </script>
 <script src="{{asset('dist/js/home.js')}}"></script>
 @stop
-

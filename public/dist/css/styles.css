@@ -1108,8 +1108,7 @@ body {font-family: Verdana,sans-serif;}
 }
 
 .pict{
-  height: 600px;
-  width: 1500px;
-  position: absolute;
-  left: -180px;
+  height: 25vw;
+  width: 80vw;
+	margin: auto;
 }
