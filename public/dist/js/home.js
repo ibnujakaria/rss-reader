@@ -53,7 +53,7 @@ var home = new Vue({
 		},
 		getTimeLine: function (options) {
 			params = {}
-			
+
 			if (options) {
 				if (options.url)
 					params = {site: options.url}
@@ -81,7 +81,7 @@ var home = new Vue({
 					this.timeline.articles.data = oldData.concat(this.timeline.articles.data)
 				})
 			}
-		}, 
+		},
 		saveItLater: function (article_id) {
 			this.$http.post('/home/collections/sites/save-it-later/' + article_id, {
 				_token: csrf_token

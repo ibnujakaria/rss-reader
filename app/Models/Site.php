@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Site extends Model
 {
 
+    protected $appends = ['is_already_added'];
+
     public function articles()
     {
         return $this->hasMany('App\Models\Article');
@@ -96,5 +98,16 @@ class Site extends Model
     public function scopeUrl($query, $url)
     {
         return $query->where('url', 'like', "%{$url}");
+    }
+
+    public function getIsAlreadyAddedAttribute()
+    {
+        if (!auth()->check()) {
+            return false;
+        }
+
+        return $this->collections()->whereHas('user', function ($query) {
+                $query->where('id', auth()->id());
+        })->count() > 0;
     }
 }

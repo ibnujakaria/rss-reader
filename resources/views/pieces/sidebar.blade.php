@@ -24,18 +24,10 @@
       </a>
     </li>
     <li class="parent ">
-      <a data-toggle="collapse" href="#savArt">
-        <span><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span>
+      <a data-toggle="collapse" @click="getSavedArticles()" href="javascript:void(0)">
+        <span><use xlink:href="#stroked-chevron-down"></use></svg></span>
         Saved Articles
       </a>
-      <ul class="children collapse" id="savArt">
-        <li v-for="article in savedArticles">
-          <a href="javascript:void(0)">
-            <svg class="glyph stroked arrow right"><use xlink:href="#stroked-arrow-right"/></svg>
-            @{{article.title}}
-          </a>
-        </li>
-      </ul>
     </li>
     <li class="parent ">
       <a data-toggle="collapse" href="#collect">

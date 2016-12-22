@@ -33,25 +33,27 @@
 			<p>
 				@{{searchResult.description}}
 			</p>
-			<div class="form-group" v-if="addToCollectionVisibility">
-				<div class="radio">
-					<label>
-						<input type="radio" v-model="addToExistingCollection" value="yes">
-						Select collection to add
-					</label>
+			<div v-if="!searchResult.is_already_added">
+				<div class="form-group" v-if="addToCollectionVisibility">
+					<div class="radio">
+						<label>
+							<input type="radio" v-model="addToExistingCollection" value="yes">
+							Select collection to add
+						</label>
+					</div>
+					<select class="form-control" v-model="selectedCollectionToAdd">
+						<option v-for="collection in collections" :value="collection.id">@{{collection.title}}</option>
+					</select>
+					<div class="radio">
+						<label>
+							<input type="radio" v-model="addToExistingCollection" value="no">
+							Or create a new collection
+						</label>
+					</div>
+					<input class="form-control" type="text" v-model="newCollectionTitle">
 				</div>
-				<select class="form-control" v-model="selectedCollectionToAdd">
-					<option v-for="collection in collections" :value="collection.id">@{{collection.title}}</option>
-				</select>
-				<div class="radio">
-					<label>
-						<input type="radio" v-model="addToExistingCollection" value="no">
-						Or create a new collection
-					</label>
-				</div>
-				<input class="form-control" type="text" v-model="newCollectionTitle">
+				<button class="btn btn-primary" @click="addToCollection">Add to Collection</button>
 			</div>
-			<button class="btn btn-primary" @click="addToCollection">Add to Collection</button>
 		</div>
 	</div>
 </div>
