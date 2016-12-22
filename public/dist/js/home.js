@@ -15,9 +15,11 @@ var home = new Vue({
 	methods: {
 		searchSites: function () {
 			this.searchSitesLoading = true
+			var notif = alertify.message("Searching " + this.keyword + "..", 0)
 			this.$http.get('/home/collections/sites/find', {params: {site: this.keyword}}).then(function (response) {
 				this.searchResult = response.body
 				this.searchSitesLoading = false
+				notif.dismiss()
 			})
 		},
 		getCollectionList: function () {
@@ -31,6 +33,7 @@ var home = new Vue({
 				return
 			}
 
+			var notif = alertify.message("Add to collections", 0)
 			if (this.addToExistingCollection === 'no') {
 				this.$http.post('/home/collections', {
 					collection_title: this.newCollectionTitle,
@@ -40,6 +43,7 @@ var home = new Vue({
 					this.searchResult = null
 					this.newCollectionTitle = null
 					this.getCollectionList()
+					this.success("Added to collection.")
 				});
 			} else {
 				this.$http.post('/home/collections/add-site/' + this.selectedCollectionToAdd + '/' + this.searchResult.id, {
@@ -48,6 +52,8 @@ var home = new Vue({
 				.then(function (response) {
 					this.searchResult = null
 					this.getCollectionList()
+					notif.dismiss()
+					alertify.success("Added to collection.")
 				})
 			}
 		},
@@ -63,8 +69,11 @@ var home = new Vue({
 				}
 			}
 
+			var notify = alertify.message('Loading articles..', 0)
 			this.$http.get('/home/collections/sites', {params: params}).then(function (response) {
 				this.timeline = response.body
+				notify.dismiss()
+				alertify.success('Articles loaded', 'success').delay(3)
 			})
 		},
 		getNextTimeLine: function () { // this to get the next page of the timeline
@@ -84,10 +93,19 @@ var home = new Vue({
 
 		},
 		saveItLater: function (article_id) {
+			var notify = alertify.message("Saving to read later..", 0)
 			this.$http.post('/home/collections/sites/save-it-later/' + article_id, {
 				_token: csrf_token
 			}).then(function (response) {
-				this.getSavedArticles()
+				notify.dismiss()
+				alertify.success("Article saved")
+			}, function (response) {
+				notify.dismiss()
+				if (response.status === 400) {
+					alertify.error("Article already added.")
+				} else {
+					alertify.error("Some errors occured :(")
+				}
 			})
 		},
 		getSavedArticles: function () {

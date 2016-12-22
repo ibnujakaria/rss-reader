@@ -55,7 +55,7 @@ class SiteController extends Controller
 
         # this ensures that the article has not been saved
         if (auth()->user()->savedArticles()->where('article_id', $article_id)->first()) {
-            return response()->json(['already added'], 500);
+            return response()->json(['message' => 'already added'], 400);
         }
         auth()->user()->savedArticles()->attach($article->id, ['type' => 'saved_to_read_later']);
 

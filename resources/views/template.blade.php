@@ -5,9 +5,12 @@
 	<title>@yield('title')</title>
 
 
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/alertifyjs/1.8.0/css/alertify.min.css"/>
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/default.min.css"/>
 	<link href="{{ asset('dist/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('dist/css/datepicker3.css') }}" rel="stylesheet">
 	<link href="{{ asset('dist/css/styles.css') }}" rel="stylesheet">
+
 	@yield('css')
 
 	<!--Icons-->
@@ -35,6 +38,7 @@
 	{{-- <script src="{{ asset('dist/js/easypiechart.js') }}"></script> --}}
 	{{-- <script src="{{ asset('dist/js/easypiechart-data.js') }}"></script> --}}
 	<script src="{{ asset('dist/js/bootstrap-datepicker.js') }}"></script>
+	<script src="https://cdn.jsdelivr.net/alertifyjs/1.8.0/alertify.min.js"></script>
 	@yield('script')
 </body>
 </html>

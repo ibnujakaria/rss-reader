@@ -50,7 +50,7 @@
 							Or create a new collection
 						</label>
 					</div>
-					<input class="form-control" type="text" v-model="newCollectionTitle">
+					<input class="form-control" type="text" v-model="newCollectionTitle" placeholder="Title of collection">
 				</div>
 				<button class="btn btn-primary" @click="addToCollection">Add to Collection</button>
 			</div>
