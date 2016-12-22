@@ -69,10 +69,12 @@
 			</div>
 			<div class="panel-footer">
 				<p>
-					<span class="glyphicon glyphicon-ok"></span>
-					<a target="_blank" :href="article.link"> See more </a>
-					<span class="glyphicon glyphicon-time"></span>
-					<a href="javascript:void(0)" @click="saveItLater(article.id)"> Save it later</a>
+					<a target="_blank" :href="article.link" class="btn btn-default">
+						<span class="fa fa-external-link"></span> See more
+					</a>
+					<a href="javascript:void(0)" @click="saveItLater(article.id)" class="btn btn-default">
+						<span class="fa fa-save"></span> Save it later
+					</a>
 				</p>
 			</div>
 		</div>
@@ -88,10 +90,12 @@
 			</div>
 			<div class="panel-footer">
 				<p>
-					<span class="glyphicon glyphicon-ok"></span>
-					<a target="_blank" :href="article.link"> See more </a>
-					<span class="glyphicon glyphicon-time"></span>
-					<a href="javascript:void(0)" @click="saveItLater(article.id)"> Save it later</a>
+					<a target="_blank" :href="article.link" class="btn btn-default">
+						<span class="fa fa-external-link"></span> See more
+					</a>
+					<a href="javascript:void(0)" @click="saveItLater(article.id)" class="btn btn-default">
+						<span class="fa fa-save"></span> Save it later
+					</a>
 				</p>
 			</div>
 		</div>

@@ -7,6 +7,7 @@
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/alertifyjs/1.8.0/css/alertify.min.css"/>
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.8.0/css/themes/default.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="{{ asset('dist/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('dist/css/datepicker3.css') }}" rel="stylesheet">
 	<link href="{{ asset('dist/css/styles.css') }}" rel="stylesheet">
