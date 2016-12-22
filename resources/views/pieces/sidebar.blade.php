@@ -11,46 +11,58 @@
   @endif
   <ul class="nav menu">
     @if (@$app_id === 'home')
-    <li class="parent">
+    <li class="active" v-if="timelineLabel == 'all' && !(timeline && timeline.site)">
       <a href="javascript:void(0)" @click="getTimeLine({type: 'all'})">
         <span class="glyphicon glyphicon-home"></span>
         All
       </a>
     </li>
-    <li>
+    <li v-else>
+      <a href="javascript:void(0)" @click="getTimeLine({type: 'all'})">
+        <span class="glyphicon glyphicon-home"></span>
+        All
+      </a>
+    </li>
+    <li class="active" v-if="timelineLabel == 'today' && !(timeline && timeline.site)">
       <a href="javascript:void(0)" @click="getTimeLine({type: 'today'})">
         <span class="glyphicon glyphicon-flag"></span>
         Today
       </a>
     </li>
-    <li class="parent active" v-if="timelineLabel == 'My Saved Articles'">
+    <li v-else>
+      <a href="javascript:void(0)" @click="getTimeLine({type: 'today'})">
+        <span class="glyphicon glyphicon-flag"></span>
+        Today
+      </a>
+    </li>
+    <li class="active" v-if="timelineLabel == 'My Saved Articles' && !(timeline && timeline.site)">
       <a @click="getSavedArticles()" href="javascript:void(0)">
-        <span class="glyphicon glyphicon-bookmark"></span>
+        <span class="fa fa-save"></span>
         Saved Articles
       </a>
     </li>
-    <li class="parent" v-else>
+    <li v-else>
       <a @click="getSavedArticles()" href="javascript:void(0)">
-        <span class="glyphicon glyphicon-bookmark"></span>
+        <span class="fa fa-save"></span>
         Saved Articles
       </a>
     </li>
     <li class="parent ">
       <a data-toggle="collapse" href="#collect">
-        <span class="glyphicon glyphicon-plus"></span>
+        <span class="glyphicon glyphicon-tags"></span>
         Collections
       </a>
       <ul class="children collapse" id="collect">
         <span v-if="!collections.length">Loading...</span>
         <li v-for="(collection, index) in collections" v-else class="parent">
           <a data-toggle="collapse" :href="'#collect-'+index">
-            <span><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span>
+            <span class="glyphicon glyphicon-tag"></span>
             @{{collection.title}}
           </a>
           <ul class="children collapse" :id="'collect-'+index">
             <li v-for="site in collection.sites">
               <a href="javascript:void(0)" @click="getTimeLine({url: site.url})">
-                <svg class="glyph stroked arrow right"><use xlink:href="#stroked-arrow-right"/></svg>
+                <span class="glyphicon glyphicon-bookmark"></span>
                 @{{site.title}}
               </a>
             </li>
