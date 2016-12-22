@@ -20,6 +20,10 @@ var home = new Vue({
 				this.searchResult = response.body
 				this.searchSitesLoading = false
 				notif.dismiss()
+
+				if (this.searchResult.is_already_added) {
+					this.getTimeLine({url: this.searchResult.url})
+				}
 			})
 		},
 		getCollectionList: function () {
