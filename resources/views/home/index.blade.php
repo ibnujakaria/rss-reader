@@ -95,7 +95,7 @@
 				</p>
 			</div>
 		</div>
-		<div style="text-align: center" v-if="timeline.articles.length">
+		<div style="text-align: center" v-if="timeline.articles.current_page < timeline.articles.last_page">
 			<button class="btn btn-link" @click="getNextTimeLine">Load More</button>
 		</div>
 		<div v-else>

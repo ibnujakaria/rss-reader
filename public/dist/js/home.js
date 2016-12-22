@@ -76,7 +76,7 @@ var home = new Vue({
 				var oldData = this.timeline.articles.data
 				var params = {page: this.timeline.articles.current_page + 1}
 
-				this.$http.get('/home/collections/sites', {params: params}).then(function (response) {
+				this.$http.get(this.timeline.articles.next_page_url).then(function (response) {
 					this.timeline = response.body
 					this.timeline.articles.data = oldData.concat(this.timeline.articles.data)
 				})

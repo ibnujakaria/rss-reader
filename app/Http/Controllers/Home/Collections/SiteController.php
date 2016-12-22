@@ -43,7 +43,7 @@ class SiteController extends Controller
                 $articles->where('pub_date', '>=', Carbon::today()->toDateString());
             }
 
-            $articles = $articles->orderby('pub_date', 'desc')->paginate(15);
+            $articles = $articles->orderby('pub_date', 'desc')->paginate(15)->appends($request->all());
 
             return response()->json(compact('articles')); 
     	}
