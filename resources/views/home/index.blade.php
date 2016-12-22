@@ -105,6 +105,7 @@
 		<div v-else>
 			There is no entries.
 		</div>
+		<div id="pemisah"></div>
 	</div>
 </div>
 
