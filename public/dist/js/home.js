@@ -70,6 +70,7 @@ var home = new Vue({
 				if (options.type){
 					params = options;
 					this.timelineLabel = options.type
+					this.searchResult =  null
 				}
 			}
 
@@ -78,6 +79,7 @@ var home = new Vue({
 				this.timeline = response.body
 				notify.dismiss()
 				alertify.success('Articles loaded', 'success').delay(3)
+				$("html, body").animate({ scrollTop: 0 }, "slow");
 			})
 		},
 		getNextTimeLine: function () { // this to get the next page of the timeline
@@ -92,6 +94,7 @@ var home = new Vue({
 				this.$http.get(this.timeline.articles.next_page_url).then(function (response) {
 					this.timeline = response.body
 					this.timeline.articles.data = oldData.concat(this.timeline.articles.data)
+					this.searchResult =  null
 				})
 			}
 
@@ -116,6 +119,8 @@ var home = new Vue({
 			this.$http.get('/home/collections/sites/saved-articles').then(function (response) {
 				this.timeline = response.body
 				this.timelineLabel = 'My Saved Articles'
+				$("html, body").animate({ scrollTop: 0 }, "slow");
+				this.searchResult =  null
 			})
 		}
 	}
