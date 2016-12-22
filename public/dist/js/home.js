@@ -9,8 +9,8 @@ var home = new Vue({
 		newCollectionTitle: null,
 		addToExistingCollection: 'yes',
 		collections: [],
-		savedArticles: [],
-		timeline: null
+		timeline: null,
+		timelineLabel: null
 	},
 	methods: {
 		searchSites: function () {
@@ -81,6 +81,7 @@ var home = new Vue({
 					this.timeline.articles.data = oldData.concat(this.timeline.articles.data)
 				})
 			}
+
 		},
 		saveItLater: function (article_id) {
 			this.$http.post('/home/collections/sites/save-it-later/' + article_id, {
@@ -91,7 +92,8 @@ var home = new Vue({
 		},
 		getSavedArticles: function () {
 			this.$http.get('/home/collections/sites/saved-articles').then(function (response) {
-				this.savedArticles = response.body.articles
+				this.timeline = response.body
+				this.timelineLabel = 'My Saved Articles'
 			})
 		}
 	}

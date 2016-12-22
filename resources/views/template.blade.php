@@ -30,10 +30,10 @@
 
 	<script src="{{ asset('dist/js/jquery-1.11.1.min.js') }}"></script>
 	<script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
-	<script src="{{ asset('js/chart.min.js') }}"></script>
-	<script src="{{ asset('dist/js/chart-data.js') }}"></script>
-	<script src="{{ asset('dist/js/easypiechart.js') }}"></script>
-	<script src="{{ asset('dist/js/easypiechart-data.js') }}"></script>
+	{{-- <script src="{{ asset('js/chart.min.js') }}"></script> --}}
+	{{-- <script src="{{ asset('dist/js/chart-data.js') }}"></script> --}}
+	{{-- <script src="{{ asset('dist/js/easypiechart.js') }}"></script> --}}
+	{{-- <script src="{{ asset('dist/js/easypiechart-data.js') }}"></script> --}}
 	<script src="{{ asset('dist/js/bootstrap-datepicker.js') }}"></script>
 	@yield('script')
 </body>

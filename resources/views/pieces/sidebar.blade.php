@@ -24,7 +24,7 @@
       </a>
     </li>
     <li class="parent ">
-      <a data-toggle="collapse" @click="getSavedArticles()" href="javascript:void(0)">
+      <a @click="getSavedArticles()" href="javascript:void(0)">
         <span><use xlink:href="#stroked-chevron-down"></use></svg></span>
         Saved Articles
       </a>
