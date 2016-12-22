@@ -99,8 +99,8 @@
 				</p>
 			</div>
 		</div>
-		<div style="text-align: center" v-if="timeline.articles.current_page < timeline.articles.last_page">
-			<button class="btn btn-link" @click="getNextTimeLine">Load More</button>
+		<div v-if="timeline.articles.current_page < timeline.articles.last_page">
+			<button class="btn btn-info btn-block" @click="getNextTimeLine">Load More</button>
 		</div>
 		<div v-else>
 			There is no entries.
