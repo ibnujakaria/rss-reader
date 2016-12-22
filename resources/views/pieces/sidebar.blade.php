@@ -13,25 +13,31 @@
     @if (@$app_id === 'home')
     <li class="parent">
       <a href="javascript:void(0)" @click="getTimeLine({type: 'all'})">
-        <svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"/></svg>
+        <span class="glyphicon glyphicon-home"></span>
         All
       </a>
     </li>
     <li>
       <a href="javascript:void(0)" @click="getTimeLine({type: 'today'})">
-        <svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg>
+        <span class="glyphicon glyphicon-flag"></span>
         Today
       </a>
     </li>
-    <li class="parent ">
+    <li class="parent active" v-if="timelineLabel == 'My Saved Articles'">
       <a @click="getSavedArticles()" href="javascript:void(0)">
-        <span><use xlink:href="#stroked-chevron-down"></use></svg></span>
+        <span class="glyphicon glyphicon-bookmark"></span>
+        Saved Articles
+      </a>
+    </li>
+    <li class="parent" v-else>
+      <a @click="getSavedArticles()" href="javascript:void(0)">
+        <span class="glyphicon glyphicon-bookmark"></span>
         Saved Articles
       </a>
     </li>
     <li class="parent ">
       <a data-toggle="collapse" href="#collect">
-        <span><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span>
+        <span class="glyphicon glyphicon-plus"></span>
         Collections
       </a>
       <ul class="children collapse" id="collect">

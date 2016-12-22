@@ -71,7 +71,7 @@
 				<p>
 					<span class="glyphicon glyphicon-ok"></span>
 					<a target="_blank" :href="article.link"> See more </a>
-					<span class="glyphicon glyphicon-time"></span>
+					<span class="glyphicon glyphicon-bookmark"></span>
 					<a href="javascript:void(0)" @click="saveItLater(article.id)"> Save it later</a>
 				</p>
 			</div>
@@ -90,13 +90,13 @@
 				<p>
 					<span class="glyphicon glyphicon-ok"></span>
 					<a target="_blank" :href="article.link"> See more </a>
-					<span class="glyphicon glyphicon-time"></span>
+					<span class="glyphicon glyphicon-bookmark"></span>
 					<a href="javascript:void(0)" @click="saveItLater(article.id)"> Save it later</a>
 				</p>
 			</div>
 		</div>
-		<div style="text-align: center" v-if="timeline.articles.current_page < timeline.articles.last_page">
-			<button class="btn btn-link" @click="getNextTimeLine">Load More</button>
+		<div v-if="timeline.articles.current_page < timeline.articles.last_page">
+			<button class="btn btn-info btn-block" @click="getNextTimeLine">Load More</button>
 		</div>
 		<div v-else>
 			There is no entries.
