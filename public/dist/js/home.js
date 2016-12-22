@@ -53,7 +53,7 @@ var home = new Vue({
 		},
 		getTimeLine: function (options) {
 			params = {}
-			
+
 			if (options) {
 				if (options.url)
 					params = {site: options.url}
@@ -81,7 +81,7 @@ var home = new Vue({
 					this.timeline.articles.data = oldData.concat(this.timeline.articles.data)
 				})
 			}
-		}, 
+		},
 		saveItLater: function (article_id) {
 			this.$http.post('/home/collections/sites/save-it-later/' + article_id, {
 				_token: csrf_token
@@ -91,12 +91,12 @@ var home = new Vue({
 		},
 		getSavedArticles: function () {
 			this.$http.get('/home/collections/sites/saved-articles').then(function (response) {
-				this.timelineLabel = 'Saved Articles'
-				this.timeline = response.body
+				this.savedArticles = response.body.articles
 			})
 		}
 	}
 });
 
-home.getTimeLine({type: 'today'})
+home.getTimeLine()
 home.getCollectionList()
+home.getSavedArticles()
