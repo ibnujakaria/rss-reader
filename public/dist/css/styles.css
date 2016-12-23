@@ -583,6 +583,8 @@ a.bg-danger:hover {
 	padding: 0;
 	margin: 0;
 	background: #f9f9f9;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .sidebar ul.nav ul.children li a {
@@ -1033,6 +1035,18 @@ fieldset[disabled] .btn-custom.active {
 
 #help{
 	text-align: center;
+}
+
+.label-count {
+  font-size: 16px;
+  line-height: 15px;
+  background-color: #34495E;
+	color: white;
+  padding: 0 4px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
 }
 
 

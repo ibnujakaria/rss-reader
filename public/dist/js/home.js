@@ -10,7 +10,8 @@ var home = new Vue({
 		addToExistingCollection: 'yes',
 		collections: [],
 		timeline: null,
-		timelineLabel: null
+		timelineLabel: null,
+		savedArticlesCount: null
 	},
 	methods: {
 		searchSites: function () {
@@ -121,6 +122,7 @@ var home = new Vue({
 			}).then(function (response) {
 				notify.dismiss()
 				alertify.success("Article saved")
+				this.savedArticlesCount += 1
 			}, function (response) {
 				notify.dismiss()
 				if (response.status === 400) {
@@ -140,9 +142,16 @@ var home = new Vue({
 				notify.dismiss()
 				alertify.success('Saved articles loaded.')
 			})
+		},
+		getCountSavedArticles: function() {
+			this.$http.get('/home/collections/sites/saved-articles/count').then(function (response) {
+				this.savedArticlesCount = response.body
+			})
 		}
 	}
 });
 
 home.getTimeLine()
 home.getCollectionList()
+home.getSavedArticles()
+home.getCountSavedArticles()
