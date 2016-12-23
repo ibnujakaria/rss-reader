@@ -12,7 +12,7 @@
 	</div>
 
 	<div class="panel-footer">
-		<button class="btn btn-primary" @click="lanjutkan">Next {{loading}}</button>
+		<button class="btn btn-primary" @click="lanjutkan">Next @{{loading}}</button>
 	</div>
 </div>
 @endsection
