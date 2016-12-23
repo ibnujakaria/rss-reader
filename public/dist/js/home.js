@@ -131,11 +131,14 @@ var home = new Vue({
 			})
 		},
 		getSavedArticles: function () {
+			var notify = alertify.message('Loading saved articles..', 0)
 			this.$http.get('/home/collections/sites/saved-articles').then(function (response) {
 				this.timeline = response.body
 				this.timelineLabel = 'My Saved Articles'
 				$("html, body").animate({ scrollTop: 0 }, "slow");
 				this.searchResult =  null
+				notify.dismiss()
+				alertify.success('Saved articles loaded.')
 			})
 		}
 	}
@@ -143,4 +146,3 @@ var home = new Vue({
 
 home.getTimeLine()
 home.getCollectionList()
-home.getSavedArticles()
