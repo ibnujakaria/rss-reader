@@ -41,6 +41,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Collection');
     }
 
+    public function interests()
+    {
+        return $this->morphToMany('App\Models\Category', 'categorizable');
+    }
+
     public function savedArticles()
     {
         return $this->belongsToMany('App\Models\Article', 'user_articles')->wherePivot('type', 'saved_to_read_later')->withTimestamps();

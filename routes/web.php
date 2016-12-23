@@ -16,6 +16,19 @@ Route::get('/', 'WelcomeController@welcome');
 Route::group(['prefix' => 'home', 'namespace' => 'Home'], function () {
 	Route::get('/', 'HomeController@index')->name('home.index');
 
+	Route::get('/user', function () {
+		return \App\User::with('interests')->get();
+	});
+
+	Route::get('/get-interests', function () {
+		$interests = \App\Models\Category::orderBy('title', 'asc')->get();
+		return response()->json(compact('interests'));
+	});
+
+	Route::post('/user/interest', 'UserController@storeInterests')->name('home.user.store-interests');
+
+	Route::get('/user/select-interests', 'UserController@selectInterests')->name('home.user.select-interests');
+
 	Route::group(['prefix' => 'collections', 'namespace' => 'Collections'], function () {
 		Route::get('/sites/find', 'SiteFinderController@find');
 

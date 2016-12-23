@@ -21,10 +21,17 @@
 	<div id="{{@$app_id}}">
 		@include('pieces.navbar')
 		@if (auth()->check())
+
+		@if (!@$noSidebar)
 		@include('pieces.sidebar')
 		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 			@yield('body')
 		</div>
+		@else
+		<div class="container">
+			@yield('body')
+		</div>
+		@endif
 		@else
 		@yield('body')
 		@endif
