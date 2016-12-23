@@ -11,12 +11,13 @@ var home = new Vue({
 		collections: [],
 		timeline: null,
 		timelineLabel: null,
-		savedArticlesCount: null
+		savedArticlesCount: null,
+		manageCollectionShow: false
 	},
 	methods: {
 		searchSites: function () {
 			this.searchSitesLoading = true
-			var notif = alertify.message("Searching " + this.keyword + "..", 0)
+				var notif = alertify.message("Searching " + this.keyword + "..", 0)
 			this.$http.get('/home/collections/sites/find', {params: {site: this.keyword}}).then(function (response) {
 				this.searchResult = response.body
 				this.searchSitesLoading = false
@@ -147,6 +148,22 @@ var home = new Vue({
 			this.$http.get('/home/collections/sites/saved-articles/count').then(function (response) {
 				this.savedArticlesCount = response.body
 			})
+		},
+		mouseEnter: function() {
+			this.manageCollectionShow = true
+		},
+		mouseLeave: function() {
+			this.manageCollectionShow = false
+		},
+		mouseClick: function() {
+			alertify.prompt("Manage collections.", "",
+			function(evt, value ){
+				alertify.success('Ok: ' + value);
+			},
+			function(){
+				alertify.error('Cancel');
+			})
+			;
 		}
 	}
 });

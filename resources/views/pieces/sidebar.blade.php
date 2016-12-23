@@ -23,24 +23,10 @@
         Today
       </a>
     </li>
-<<<<<<< HEAD
-    <li v-else>
-      <a href="javascript:void(0)" @click="getTimeLine({type: 'today'})">
-        <span class="glyphicon glyphicon-flag"></span>
-        Today
-      </a>
-    </li>
-    <li class="active" v-if="timelineLabel == 'My Saved Articles' && !(timeline && timeline.site)">
-      <a @click="getSavedArticles()" href="javascript:void(0)">
-        <span class="fa fa-save"></span>
-        Saved Articles
-        <span class="label-count">@{{savedArticlesCount}}</span>
-=======
     <li :class="{active: timelineLabel === 'Top Articles'}">
       <a href="javascript:void(0)" @click="getTopArticles()">
         <span class="fa fa-line-chart"></span>
         Top Articles
->>>>>>> 0c9170c75611bbfae7198574b47497725ccb47ef
       </a>
     </li>
     <li :class="{active: timelineLabel == 'My Saved Articles' && !(timeline && timeline.site)}">
@@ -51,9 +37,10 @@
       </a>
     </li>
     <li class="parent ">
-      <a data-toggle="collapse" href="#collect">
+      <a data-toggle="collapse" href="#collect" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
         <span class="glyphicon glyphicon-tags"></span>
         Collections
+        <span class="fa fa-gear" style="float: right;" v-show="manageCollectionShow" @click="mouseClick"></span>
       </a>
       <ul class="children collapse" id="collect">
         <span v-if="!collections.length">Loading...</span>
