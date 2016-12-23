@@ -99,6 +99,12 @@ var home = new Vue({
 			}
 
 		},
+		clickAnArticle: function (article) {
+			console.log('clicked -> ' + article.id)
+			this.$http.get('/home/collections/sites/articles/' + article.id).then((response) => {
+				console.log(response.body.message)
+			})
+		},
 		saveItLater: function (article_id) {
 			var notify = alertify.message("Saving to read later..", 0)
 			this.$http.post('/home/collections/sites/save-it-later/' + article_id, {

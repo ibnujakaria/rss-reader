@@ -49,6 +49,17 @@ class SiteController extends Controller
     	}
     }
 
+    /**
+    * this function is used to monitor the clicked articles.
+    * then the data is used to get top articles
+    */
+    public function clickAnArticle(Article $article)
+    {
+        auth()->user()->clickedArticles()->attach($article->id, ['type' => 'clicked']);
+
+        return response()->json(['message' => 'action recorded.']);
+    }
+
     public function saveItLater($article_id)
     {
         $article = Article::findOrFail($article_id); # this ensures that the id exists
@@ -59,7 +70,7 @@ class SiteController extends Controller
         }
         auth()->user()->savedArticles()->attach($article->id, ['type' => 'saved_to_read_later']);
 
-        return response()->json('success');
+        return response()->json(['message' => 'success']);
     }
 
     public function getArticleSavedArticles()
