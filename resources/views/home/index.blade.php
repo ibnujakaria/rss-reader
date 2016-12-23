@@ -5,14 +5,7 @@
 @section('body')
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header" v-if="timeline && timeline.site">
-			Welcome to Home | @{{timeline.site.title}}
-			<button class="btn btn-link" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="button"><span class="glyphicon glyphicon-chevron-down"></span></button>
-			<ul class="dropdown-menu" aria-labelledby="dLabel">
-				<li><a href="#">Create</a></li>
-				<li><a href="#">Delete</a></li>
-			</ul>
-		</h1>
+		<h1 class="page-header" v-if="timeline && timeline.site">Welcome to Home | @{{timeline.site.title}}</h1>
 		<h1 class="page-header" v-else-if="timelineLabel">Welcome to Home | @{{timelineLabel}}</h1>
 		<h1 class="page-header" v-else>Welcome to Home</h1>
 	</div>
