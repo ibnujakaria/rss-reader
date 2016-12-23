@@ -37,13 +37,13 @@
     </li>
     <li :class="{active: timelineLabel === 'Top Articles'}">
       <a href="javascript:void(0)" @click="getTopArticles()">
-        <span class="glyphicon fa fa-line-chart"></span>
+        <span class="fa fa-line-chart"></span>
         Top Articles
       </a>
     </li>
     <li class="active" v-if="timelineLabel == 'My Saved Articles' && !(timeline && timeline.site)">
       <a @click="getSavedArticles()" href="javascript:void(0)">
-        <span class="glyphicon fa fa-save"></span>
+        <span class="fa fa-save"></span>
         Saved Articles
       </a>
     </li>
