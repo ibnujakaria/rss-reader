@@ -11,24 +11,19 @@
   @endif
   <ul class="nav menu">
     @if (@$app_id === 'home')
-    <li class="active" v-if="timelineLabel == 'all' && !(timeline && timeline.site)">
+    <li :class="{active: timelineLabel == 'all' && !(timeline && timeline.site)}">
       <a href="javascript:void(0)" @click="getTimeLine({type: 'all'})">
         <span class="glyphicon glyphicon-home"></span>
         All
       </a>
     </li>
-    <li v-else>
-      <a href="javascript:void(0)" @click="getTimeLine({type: 'all'})">
-        <span class="glyphicon glyphicon-home"></span>
-        All
-      </a>
-    </li>
-    <li class="active" v-if="timelineLabel == 'today' && !(timeline && timeline.site)">
+    <li :class="{active: timelineLabel == 'today' && !(timeline && timeline.site)}">
       <a href="javascript:void(0)" @click="getTimeLine({type: 'today'})">
         <span class="glyphicon glyphicon-flag"></span>
         Today
       </a>
     </li>
+<<<<<<< HEAD
     <li v-else>
       <a href="javascript:void(0)" @click="getTimeLine({type: 'today'})">
         <span class="glyphicon glyphicon-flag"></span>
@@ -40,9 +35,15 @@
         <span class="fa fa-save"></span>
         Saved Articles
         <span class="label-count">@{{savedArticlesCount}}</span>
+=======
+    <li :class="{active: timelineLabel === 'Top Articles'}">
+      <a href="javascript:void(0)" @click="getTopArticles()">
+        <span class="fa fa-line-chart"></span>
+        Top Articles
+>>>>>>> 0c9170c75611bbfae7198574b47497725ccb47ef
       </a>
     </li>
-    <li v-else>
+    <li :class="{active: timelineLabel == 'My Saved Articles' && !(timeline && timeline.site)}">
       <a @click="getSavedArticles()" href="javascript:void(0)">
         <span class="fa fa-save"></span>
         Saved Articles

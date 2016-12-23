@@ -11,7 +11,7 @@
 	<link href="{{ asset('dist/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('dist/css/datepicker3.css') }}" rel="stylesheet">
 	<link href="{{ asset('dist/css/styles.css') }}" rel="stylesheet">
-
+	<link rel="stylesheet" type="text/css" href="{{asset('dist/css/custom.css')}}">	
 	@yield('css')
 
 	<!--Icons-->

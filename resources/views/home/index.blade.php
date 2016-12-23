@@ -76,7 +76,7 @@
 			</div>
 			<div class="panel-footer">
 				<p>
-					<a target="_blank" :href="article.link" class="btn btn-default">
+					<a target="_blank" :href="article.link" class="btn btn-default" @click="clickAnArticle(article)">
 						<span class="fa fa-external-link"></span> See more
 					</a>
 					<a href="javascript:void(0)" @click="saveItLater(article.id)" class="btn btn-default">
@@ -97,7 +97,7 @@
 			</div>
 			<div class="panel-footer">
 				<p>
-					<a target="_blank" :href="article.link" class="btn btn-default">
+					<a target="_blank" :href="article.link" class="btn btn-default" @click="clickAnArticle(article)">
 						<span class="fa fa-external-link"></span> See more
 					</a>
 					<a href="javascript:void(0)" class="btn btn-default" v-if="timelineLabel == 'My Saved Articles'">

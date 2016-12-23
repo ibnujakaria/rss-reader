@@ -45,4 +45,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Models\Article', 'user_articles')->wherePivot('type', 'saved_to_read_later')->withTimestamps();
     }
+
+    public function clickedArticles()
+    {
+        return $this->belongsToMany('App\Models\Article', 'user_articles')->wherePivot('type', 'clicked')->withTimestamps();
+    }
 }

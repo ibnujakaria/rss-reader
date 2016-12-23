@@ -100,6 +100,21 @@ var home = new Vue({
 			}
 
 		},
+		clickAnArticle: function (article) {
+			console.log('clicked -> ' + article.id)
+			this.$http.get('/home/collections/sites/articles/' + article.id).then((response) => {
+				console.log(response.body.message)
+			})
+		},
+		getTopArticles: function () {
+			var notify = alertify.message('Loading top articles..', 0)
+			this.$http.get('/home/collections/sites/articles/top').then((response) => {
+				notify.dismiss()
+				alertify.success('Top articles loaded.')
+				this.timeline = response.body
+				this.timelineLabel = 'Top Articles'
+			})
+		},
 		saveItLater: function (article_id) {
 			var notify = alertify.message("Saving to read later..", 0)
 			this.$http.post('/home/collections/sites/save-it-later/' + article_id, {
@@ -118,11 +133,14 @@ var home = new Vue({
 			})
 		},
 		getSavedArticles: function () {
+			var notify = alertify.message('Loading saved articles..', 0)
 			this.$http.get('/home/collections/sites/saved-articles').then(function (response) {
 				this.timeline = response.body
 				this.timelineLabel = 'My Saved Articles'
 				$("html, body").animate({ scrollTop: 0 }, "slow");
 				this.searchResult =  null
+				notify.dismiss()
+				alertify.success('Saved articles loaded.')
 			})
 		},
 		getCountSavedArticles: function() {
