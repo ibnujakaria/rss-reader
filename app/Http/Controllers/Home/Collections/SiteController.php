@@ -60,6 +60,20 @@ class SiteController extends Controller
         return response()->json(['message' => 'action recorded.']);
     }
 
+    /**
+    * this function is to get the top articles
+    * the top articles is sorted by the count of clicked by the users
+    */
+    public function topArticles()
+    {
+        $articles = Article::select([
+            '*',
+            \DB::raw('(select count(*) from user_articles where article_id = articles.id and type="clicked") as clicks_count')
+        ])->whereHas('usersWhoClick')->with('usersWhoClick')->orderBy('clicks_count', 'desc')->paginate(15);
+
+        return response()->json(compact('articles')); 
+    }
+
     public function saveItLater($article_id)
     {
         $article = Article::findOrFail($article_id); # this ensures that the id exists

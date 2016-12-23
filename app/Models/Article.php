@@ -12,4 +12,9 @@ class Article extends Model
     {
     	return $this->belongsTo("App\Models\Site");
     }
+
+    public function usersWhoClick()
+    {
+    	return $this->belongsToMany('App\User', 'user_articles')->wherePivot('type', 'clicked')->withTimestamps();
+    }
 }

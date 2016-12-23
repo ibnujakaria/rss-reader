@@ -105,6 +105,15 @@ var home = new Vue({
 				console.log(response.body.message)
 			})
 		},
+		getTopArticles: function () {
+			var notify = alertify.message('Loading top articles..', 0)
+			this.$http.get('/home/collections/sites/articles/top').then((response) => {
+				notify.dismiss()
+				alertify.success('Top articles loaded.')
+				this.timeline = response.body
+				this.timelineLabel = 'Top Articles'
+			})
+		},
 		saveItLater: function (article_id) {
 			var notify = alertify.message("Saving to read later..", 0)
 			this.$http.post('/home/collections/sites/save-it-later/' + article_id, {
