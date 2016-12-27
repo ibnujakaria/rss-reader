@@ -33,7 +33,7 @@
       <a @click="getSavedArticles()" href="javascript:void(0)">
         <span class="fa fa-save"></span>
         Saved Articles
-        <span class="label-count">@{{savedArticlesCount}}</span>
+        <span class="badge" v-if="savedArticlesCount">@{{savedArticlesCount}}</span>
       </a>
     </li>
     <li class="parent ">

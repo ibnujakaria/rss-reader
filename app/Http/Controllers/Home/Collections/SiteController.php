@@ -95,7 +95,14 @@ class SiteController extends Controller
 
     public function getCountSavedArticles()
     {
-      $articlesCount = auth()->user()->savedArticles()->orderby('user_articles.id', 'desc')->count();
+      $articlesCount = auth()->user()->savedArticles()->count();
       return response()->json($articlesCount);
+    }
+
+    public function getRandomSites()
+    {
+        $sites = Site::orderBy(\DB::raw('rand()'))->get();
+
+        return response()->json(compact('sites'));
     }
 }
