@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5e773588314c89e260debfd995cd76a7",
-    "content-hash": "d3ac5d4ad84f2c77d9583e86f5843f36",
+    "hash": "45ff306714ebf137ed1657311a7ecfce",
+    "content-hash": "868a56de7ec8724f5ae63da159d1e520",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -733,6 +733,42 @@
                 "uri"
             ],
             "time": "2016-06-24 23:00:38"
+        },
+        {
+            "name": "jakeasmith/http_build_url",
+            "version": "0.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jakeasmith/http_build_url.git",
+                "reference": "9d84710feab0f3d7c04c1e11dccef30ee350aad6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jakeasmith/http_build_url/zipball/9d84710feab0f3d7c04c1e11dccef30ee350aad6",
+                "reference": "9d84710feab0f3d7c04c1e11dccef30ee350aad6",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/http_build_url.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jake A. Smith",
+                    "email": "theman@jakeasmith.com"
+                }
+            ],
+            "description": "Provides functionality for http_build_url() to environments without pecl_http.",
+            "time": "2014-11-17 16:24:50"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1728,6 +1764,125 @@
             "time": "2016-11-22 19:21:44"
         },
         {
+            "name": "scotteh/php-dom-wrapper",
+            "version": "0.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/scotteh/php-dom-wrapper.git",
+                "reference": "f35c908661c0099de3c786f5afe2ef7b1f31faee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/scotteh/php-dom-wrapper/zipball/f35c908661c0099de3c786f5afe2ef7b1f31faee",
+                "reference": "f35c908661c0099de3c786f5afe2ef7b1f31faee",
+                "shasum": ""
+            },
+            "require": {
+                "ext-libxml": "*",
+                "ext-mbstring": "*",
+                "lib-libxml": ">=2.7.7",
+                "php": ">=5.5.9",
+                "symfony/css-selector": "^3.2"
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "2.8.*",
+                "phpunit/phpunit": "4.6.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DOMWrap\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Scott",
+                    "email": "andrew@andrewscott.net.au"
+                }
+            ],
+            "description": "Simple DOM wrapper to select nodes using either CSS or XPath expressions and manipulate results quickly and easily.",
+            "homepage": "https://github.com/scotteh/php-dom-wrapper",
+            "keywords": [
+                "css",
+                "dom",
+                "html",
+                "parser",
+                "wrapper"
+            ],
+            "time": "2016-12-10 11:26:06"
+        },
+        {
+            "name": "scotteh/php-goose",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/scotteh/php-goose.git",
+                "reference": "94a5f234d0349ede3e1cb6c04126b1e05aa9a81f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/scotteh/php-goose/zipball/94a5f234d0349ede3e1cb6c04126b1e05aa9a81f",
+                "reference": "94a5f234d0349ede3e1cb6c04126b1e05aa9a81f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-libxml": "*",
+                "ext-mbstring": "*",
+                "guzzlehttp/guzzle": "6.*",
+                "jakeasmith/http_build_url": "0.1.*",
+                "lib-libxml": ">=2.7.7",
+                "php": ">=5.5.0",
+                "scotteh/php-dom-wrapper": "~0.7"
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "2.8.*",
+                "phpunit/phpunit": "4.6.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Goose\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Scott",
+                    "email": "andrew@andrewscott.net.au"
+                }
+            ],
+            "description": "Readability / Html Content / Article Extractor & Web Scrapping library written in PHP",
+            "homepage": "https://github.com/scotteh/php-goose",
+            "keywords": [
+                "content",
+                "extractor",
+                "http",
+                "readability",
+                "scraper",
+                "scraping",
+                "text",
+                "website"
+            ],
+            "time": "2016-12-10 11:35:38"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.4",
             "source": {
@@ -1840,6 +1995,59 @@
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
             "time": "2016-12-08 14:58:14"
+        },
+        {
+            "name": "symfony/css-selector",
+            "version": "v3.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/css-selector.git",
+                "reference": "e1241f275814827c411d922ba8e64cf2a00b2994"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/e1241f275814827c411d922ba8e64cf2a00b2994",
+                "reference": "e1241f275814827c411d922ba8e64cf2a00b2994",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\CssSelector\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jean-François Simon",
+                    "email": "jeanfrancois.simon@sensiolabs.com"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony CssSelector Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-11-03 08:11:03"
         },
         {
             "name": "symfony/debug",
@@ -2761,16 +2969,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "0.9.6",
+            "version": "0.9.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "65d4ca18e15cb02eeb1e5336f884e46b9b905be0"
+                "reference": "4de7969f4664da3cef1ccd83866c9f59378c3371"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/65d4ca18e15cb02eeb1e5336f884e46b9b905be0",
-                "reference": "65d4ca18e15cb02eeb1e5336f884e46b9b905be0",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/4de7969f4664da3cef1ccd83866c9f59378c3371",
+                "reference": "4de7969f4664da3cef1ccd83866c9f59378c3371",
                 "shasum": ""
             },
             "require": {
@@ -2822,7 +3030,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2016-09-30 12:09:40"
+            "time": "2016-12-19 14:50:55"
         },
         {
             "name": "myclabs/deep-copy",
@@ -3974,70 +4182,17 @@
             "time": "2016-10-03 07:35:21"
         },
         {
-            "name": "symfony/css-selector",
-            "version": "v3.1.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/css-selector.git",
-                "reference": "a37b3359566415a91cba55a2d95820b3fa1a9658"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/a37b3359566415a91cba55a2d95820b3fa1a9658",
-                "reference": "a37b3359566415a91cba55a2d95820b3fa1a9658",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\CssSelector\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jean-François Simon",
-                    "email": "jeanfrancois.simon@sensiolabs.com"
-                },
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony CssSelector Component",
-            "homepage": "https://symfony.com",
-            "time": "2016-11-03 08:04:31"
-        },
-        {
             "name": "symfony/dom-crawler",
-            "version": "v3.1.8",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "51e979357eba65b1e6aac7cba75cf5aa6379b8f3"
+                "reference": "1638c7534a8a2fa0bf9e979f9aacb6d7e8e9e24e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/51e979357eba65b1e6aac7cba75cf5aa6379b8f3",
-                "reference": "51e979357eba65b1e6aac7cba75cf5aa6379b8f3",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/1638c7534a8a2fa0bf9e979f9aacb6d7e8e9e24e",
+                "reference": "1638c7534a8a2fa0bf9e979f9aacb6d7e8e9e24e",
                 "shasum": ""
             },
             "require": {
@@ -4053,7 +4208,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -4080,7 +4235,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2016-12-10 14:24:45"
+            "time": "2016-12-10 14:24:53"
         },
         {
             "name": "symfony/yaml",
@@ -4190,7 +4345,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "scotteh/php-goose": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
