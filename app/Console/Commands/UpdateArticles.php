@@ -43,10 +43,10 @@ class UpdateArticles extends Command
         foreach ($sites as $key => $site) {
             $this->line("Grabbing newest articles of {$site->url}");
             
-            $isNew = Site::grabNewestArticlesOf($site->url);
+            $articlesUpdated = Site::grabNewestArticlesOf($site->url);
             
-            if ($isNew) {
-                $this->info('There is an update');
+            if ($articlesUpdated) {
+                $this->info("There are {$articlesUpdated} new articles");
             } else {
                 $this->line("There is no update");
             }

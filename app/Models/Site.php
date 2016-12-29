@@ -89,7 +89,8 @@ class Site extends Model
             $site->last_synced = $result->site->last_synced;
             $site->save();
 
-            return true;
+            # return the length of new articles
+            return $articlesToStore->count();
         }
 
         return false;
