@@ -12,7 +12,8 @@ var home = new Vue({
 		timeline: null,
 		timelineLabel: null,
 		savedArticlesCount: null,
-		manageCollectionShow: false
+		manageCollectionShow: false,
+		selectedArticle: {}
 	},
 	methods: {
 		searchSites: function () {
@@ -106,6 +107,24 @@ var home = new Vue({
 			this.$http.get('/home/collections/sites/articles/' + article.id).then((response) => {
 				console.log(response.body.message)
 			})
+
+			if (article.body) {
+				this.showArticle(article)
+				return false
+			}
+		},
+		showArticle: function (article) {
+			this.selectedArticle = article
+			$('#modal-fullscreen').modal()
+			
+			setTimeout(function () {
+				var images = $('.modal-fullscreen img')
+			    if (images.length) {
+			    	$(images[0]).addClass('img-fullscreen')
+			    }
+
+			    console.log(images)
+			}, 1000)
 		},
 		getTopArticles: function () {
 			var notify = alertify.message('Loading top articles..', 0)

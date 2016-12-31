@@ -70,7 +70,10 @@
 			</div>
 			<div class="panel-footer">
 				<p>
-					<a target="_blank" :href="article.link" class="btn btn-default" @click="clickAnArticle(article)">
+					<a class="btn btn-default" @click="clickAnArticle(article)" v-if="article.body">
+						<span class="fa fa-external-link"></span> See more
+					</a>
+					<a target="_blank" :href="article.link" class="btn btn-default" @click="clickAnArticle(article)" v-else>
 						<span class="fa fa-external-link"></span> See more
 					</a>
 					<a href="javascript:void(0)" @click="saveItLater(article.id)" class="btn btn-default">
@@ -92,7 +95,10 @@
 			</div>
 			<div class="panel-footer">
 				<p>
-					<a target="_blank" :href="article.link" class="btn btn-default" @click="clickAnArticle(article)">
+					<a class="btn btn-default" @click="clickAnArticle(article)" v-if="article.body">
+						<span class="fa fa-external-link"></span> See more
+					</a>
+					<a target="_blank" :href="article.link" class="btn btn-default" @click="clickAnArticle(article)" v-else>
 						<span class="fa fa-external-link"></span> See more
 					</a>
 					<a href="javascript:void(0)" @click="markAsRead(article.id)" class="btn btn-default" v-if="timelineLabel == 'My Saved Articles'">
@@ -126,6 +132,28 @@
 		</div>
 	</div> --}}
 </div>
+@stop
+
+@section('modal')
+	<div style="margin-bottom: 100px">
+		<!-- Modal fullscreen -->
+		<div class="modal modal-fullscreen fade" id="modal-fullscreen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h1 class="modal-title" id="myModalLabel">@{{selectedArticle.title}}</h1>
+					</div>
+					<div class="modal-body">
+						<div class="article-content" v-html="selectedArticle.body"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 @stop
 
 @section('script')
