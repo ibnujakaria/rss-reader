@@ -150,13 +150,31 @@ var home = new Vue({
 				this.savedArticlesCount = response.body
 			})
 		},
-		mouseEnter: function() {
+		markAsRead: function (article_id) {
+			var notify = alertify.message("Marking it as read..", 0)
+			this.$http.post('/home/collections/sites/mark-as-read/' + article_id, {
+				_token: csrf_token
+			}).then(function (response) {
+				notify.dismiss()
+				alertify.success("Process done.")
+				this.savedArticlesCount -= 1
+				this.getSavedArticles()
+			}, function (response) {
+				notify.dismiss()
+				if (response.status === 400) {
+					alertify.error("Article already added.")
+				} else {
+					alertify.error("Some errors occured :(")
+				}
+			})
+		},
+		mouseEnter: function () {
 			this.manageCollectionShow = true
 		},
-		mouseLeave: function() {
+		mouseLeave: function () {
 			this.manageCollectionShow = false
 		},
-		mouseClick: function() {
+		mouseClick: function () {
 			alertify.prompt("Manage collections.", "",
 			function(evt, value ){
 				alertify.success('Ok: ' + value);

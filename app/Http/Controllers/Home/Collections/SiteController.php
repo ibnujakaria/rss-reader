@@ -87,6 +87,15 @@ class SiteController extends Controller
         return response()->json(['message' => 'success']);
     }
 
+    public function markAsRead($article_id)
+    {
+        $result = auth()->user()->savedArticles()->detach($article_id);
+
+        return response()->json([
+            'success' => (bool) $result
+        ]);
+    }
+
     public function getArticleSavedArticles()
     {
         $articles = auth()->user()->savedArticles()->orderby('user_articles.id', 'desc')->paginate(15);

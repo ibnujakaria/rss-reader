@@ -42,6 +42,7 @@ Route::group(['prefix' => 'home', 'namespace' => 'Home'], function () {
 		Route::get('/sites/saved-articles/count', 'SiteController@getCountSavedArticles');
 		Route::get('/sites/articles/{article}', 'SiteController@clickAnArticle')->name('collections.sites.click-article');
 		Route::post('sites/save-it-later/{article_id}', 'SiteController@saveItLater')->name('collections.sites.save-it-later');
+		Route::post('sites/mark-as-read/{article_id}', 'SiteController@markAsRead')->name('collections.sites.mark-as-read');
 		Route::get('sites/saved-articles', 'SiteController@getArticleSavedArticles')->name('collections.sites.saved-articles');
 	});
 });
