@@ -14,7 +14,7 @@ class AddSomeFieldsToStoreMoreDetailInformationsOfArticles extends Migration
     public function up()
     {
         Schema::table('articles', function ($table) {
-            $table->string('picture', 300)->nullable()->after('link');
+            $table->string('picture', 900)->nullable()->after('link');
             $table->longtext('body')->nullable()->after('description');
             $table->boolean('grabbed')->default(0)->after('author');
         });
