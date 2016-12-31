@@ -26,12 +26,12 @@ class SiteController extends Controller
     		$site = Site::url($url)->firstOrFail();
 
             $site->load(['articles' => function ($query) {
-                $query->orderby('pub_date', 'desc')->paginate(15);
+                $query->with('site')->orderby('pub_date', 'desc')->paginate(15);
             }]);
 
             return response()->json(compact('site'));
     	} else {
-            $articles = Article::whereHas('site', function ($query) use ($url) {
+            $articles = Article::with('site')->whereHas('site', function ($query) use ($url) {
                 $query->whereHas('collections', function ($query) use ($url) {
                     $query->whereHas('user', function ($query) {
                         $query->whereId(auth()->id());
@@ -69,7 +69,7 @@ class SiteController extends Controller
         $articles = Article::select([
             '*',
             \DB::raw('(select count(*) from user_articles where article_id = articles.id and type="clicked") as clicks_count')
-        ])->whereHas('usersWhoClick')->with('usersWhoClick')->orderBy('clicks_count', 'desc')->paginate(15);
+        ])->whereHas('usersWhoClick')->with(['site', 'usersWhoClick'])->orderBy('clicks_count', 'desc')->paginate(15);
 
         return response()->json(compact('articles')); 
     }
@@ -98,7 +98,7 @@ class SiteController extends Controller
 
     public function getArticleSavedArticles()
     {
-        $articles = auth()->user()->savedArticles()->orderby('user_articles.id', 'desc')->paginate(15);
+        $articles = auth()->user()->savedArticles()->with('site')->orderby('user_articles.id', 'desc')->paginate(15);
         return response()->json(compact('articles'));
     }
 

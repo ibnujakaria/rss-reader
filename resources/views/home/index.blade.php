@@ -63,9 +63,9 @@
 	<div v-if="timeline && timeline.site">
 		<div class="panel panel-primary" v-for="article in timeline.site.articles">
 			<div class="panel-heading" style="background:#336E7B;">@{{article.title}}</div>
+			<img class="article-cover" :src="article.picture" v-if="article.picture">
 			<div class="panel-body">
-				<img class="article-cover" :src="article.picture" v-if="article.picture">
-				<small class="text-muted">@{{article.author}} | @{{article.pub_date}}</small>
+				<small class="text-muted">@{{article.site.title}} | @{{article.author}} | @{{article.pub_date}}</small>
 				<p v-html="article.description"></p>
 			</div>
 			<div class="panel-footer">
@@ -85,9 +85,9 @@
 	<div v-if="timeline && timeline.articles">
 		<div class="panel panel-primary" v-for="article in timeline.articles.data">
 			<div class="panel-heading" style="background:#336E7B;">@{{article.title}}</div>
+			<img class="article-cover" :src="article.picture" v-if="article.picture">
 			<div class="panel-body">
-				<img class="article-cover" :src="article.picture" v-if="article.picture">
-				<small class="text-muted">@{{article.author}} | @{{article.pub_date}}</small>
+				<small class="text-muted">@{{article.site.title}} | @{{article.author}} | @{{article.pub_date}}</small>
 				<p v-html="article.description"></p>
 			</div>
 			<div class="panel-footer">
