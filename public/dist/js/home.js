@@ -114,6 +114,7 @@ var home = new Vue({
 				alertify.success('Top articles loaded.')
 				this.timeline = response.body
 				this.timelineLabel = 'Top Articles'
+				$("html, body").animate({ scrollTop: 0 }, "slow");
 			})
 		},
 		saveItLater: function (article_id) {
