@@ -6,6 +6,8 @@
 .article-cover {
 	width: 100%;
 	height: auto;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 /* .modal-transparent */

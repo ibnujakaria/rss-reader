@@ -99,6 +99,19 @@ var home = new Vue({
 					this.timeline.articles.data = oldData.concat(this.timeline.articles.data)
 					this.searchResult =  null
 				})
+			} else if (this.timeline.site.articles) {
+				if (this.timeline.site.articles.current_page === this.timeline.site.articles.last_page) {
+					return false;
+				}
+
+				var oldData = this.timeline.site.articles.data
+				var params = {page: this.timeline.site.articles.current_page + 1}
+
+				this.$http.get(this.timeline.site.articles.next_page_url).then(function (response) {
+					this.timeline = response.body
+					this.timeline.site.articles.data = oldData.concat(this.timeline.site.articles.data)
+					this.searchResult =  null
+				})
 			}
 
 		},
@@ -206,6 +219,6 @@ var home = new Vue({
 	}
 });
 
-home.getTimeLine()
+home.getTimeLine({type: 'today'})
 home.getCollectionList()
 home.getCountSavedArticles()

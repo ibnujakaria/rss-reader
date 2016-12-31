@@ -25,9 +25,11 @@ class SiteController extends Controller
     	if ($url) {
     		$site = Site::url($url)->firstOrFail();
 
-            $site->load(['articles' => function ($query) {
-                $query->with('site')->orderby('pub_date', 'desc')->paginate(15);
-            }]);
+            // $site->load(['articles' => function ($query) {
+            //     $query->with('site')->orderby('pub_date', 'desc')->paginate(15);
+            // }]);
+
+            $site->articles = $site->articles()->with('site')->orderby('pub_date', 'desc')->paginate(15)->appends($request->all());
 
             return response()->json(compact('site'));
     	} else {

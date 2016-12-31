@@ -61,53 +61,72 @@
 <div class="col-xs-12 col-md-6 col-lg-9">
 	<!-- untuk websitenya -->
 	<div v-if="timeline && timeline.site">
-		<div class="panel panel-primary" v-for="article in timeline.site.articles">
-			<div class="panel-heading" style="background:#336E7B;">@{{article.title}}</div>
-			<img class="article-cover" :src="article.picture" v-if="article.picture">
-			<div class="panel-body">
-				<small class="text-muted">@{{article.site.title}} | @{{article.author}} | @{{article.pub_date}}</small>
-				<p v-html="article.description"></p>
+		<div class="row" v-for="article in timeline.site.articles.data">
+			<div class="col-xs-4">
+				<img class="article-cover" :src="article.picture" v-if="article.picture">
 			</div>
-			<div class="panel-footer">
-				<p>
-					<a class="btn btn-default" @click="clickAnArticle(article)" v-if="article.body">
-						<span class="fa fa-external-link"></span> See more
-					</a>
-					<a target="_blank" :href="article.link" class="btn btn-default" @click="clickAnArticle(article)" v-else>
-						<span class="fa fa-external-link"></span> See more
-					</a>
-					<a href="javascript:void(0)" @click="saveItLater(article.id)" class="btn btn-default">
-						<span class="fa fa-save"></span> Save it later
-					</a>
-				</p>
+			<div class="col-xs-8">
+				<div class="panel panel-primary">
+					<div class="panel-heading" style="background:#336E7B;">@{{article.title}}</div>
+					<div class="panel-body">
+						<small class="text-muted">@{{article.site.title}} | @{{article.author}} | @{{article.pub_date}}</small>
+						<p v-html="article.description"></p>
+					</div>
+					<div class="panel-footer">
+						<p>
+							<a class="btn btn-default" @click="clickAnArticle(article)" v-if="article.body">
+								<span class="fa fa-external-link"></span> See more
+							</a>
+							<a target="_blank" :href="article.link" class="btn btn-default" @click="clickAnArticle(article)" v-else>
+								<span class="fa fa-external-link"></span> See more
+							</a>
+							<a href="javascript:void(0)" @click="saveItLater(article.id)" class="btn btn-default">
+								<span class="fa fa-save"></span> Save it later
+							</a>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
+		<div v-if="timeline.site.articles.current_page < timeline.site.articles.last_page">
+			<button class="btn btn-info btn-block" @click="getNextTimeLine">Load More</button>
+		</div>
+		<div v-else>
+			There is no entries.
+		</div>
+		<div id="pemisah"></div>
 	</div>
 
 	<!-- untuk semua article -->
 	<div v-if="timeline && timeline.articles">
-		<div class="panel panel-primary" v-for="article in timeline.articles.data">
-			<div class="panel-heading" style="background:#336E7B;">@{{article.title}}</div>
-			<img class="article-cover" :src="article.picture" v-if="article.picture">
-			<div class="panel-body">
-				<small class="text-muted">@{{article.site.title}} | @{{article.author}} | @{{article.pub_date}}</small>
-				<p v-html="article.description"></p>
+		<div class="row" v-for="article in timeline.articles.data">
+			<div class="col-xs-4">
+				<img class="article-cover" :src="article.picture" v-if="article.picture">
 			</div>
-			<div class="panel-footer">
-				<p>
-					<a class="btn btn-default" @click="clickAnArticle(article)" v-if="article.body">
-						<span class="fa fa-external-link"></span> See more
-					</a>
-					<a target="_blank" :href="article.link" class="btn btn-default" @click="clickAnArticle(article)" v-else>
-						<span class="fa fa-external-link"></span> See more
-					</a>
-					<a href="javascript:void(0)" @click="markAsRead(article.id)" class="btn btn-default" v-if="timelineLabel == 'My Saved Articles'">
-						<span class="fa fa-check-square-o"></span> Mark as read
-					</a>
-					<a href="javascript:void(0)" @click="saveItLater(article.id)" class="btn btn-default" v-else>
-						<span class="fa fa-save"></span> Save it later
-					</a>
-				</p>
+			<div class="col-xs-8">
+				<div class="panel panel-primary">
+					<div class="panel-heading" style="background:#336E7B;">@{{article.title}}</div>
+					<div class="panel-body">
+						<small class="text-muted">@{{article.site.title}} | @{{article.author}} | @{{article.pub_date}}</small>
+						<p v-html="article.description"></p>
+					</div>
+					<div class="panel-footer">
+						<p>
+							<a class="btn btn-default" @click="clickAnArticle(article)" v-if="article.body">
+								<span class="fa fa-external-link"></span> See more
+							</a>
+							<a target="_blank" :href="article.link" class="btn btn-default" @click="clickAnArticle(article)" v-else>
+								<span class="fa fa-external-link"></span> See more
+							</a>
+							<a href="javascript:void(0)" @click="markAsRead(article.id)" class="btn btn-default" v-if="timelineLabel == 'My Saved Articles'">
+								<span class="fa fa-check-square-o"></span> Mark as read
+							</a>
+							<a href="javascript:void(0)" @click="saveItLater(article.id)" class="btn btn-default" v-else>
+								<span class="fa fa-save"></span> Save it later
+							</a>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div v-if="timeline.articles.current_page < timeline.articles.last_page">
