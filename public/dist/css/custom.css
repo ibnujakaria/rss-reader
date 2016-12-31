@@ -2,3 +2,8 @@
 	box-sizing: border-box;
 	width: 25px;
 }
+
+.article-cover {
+	width: 100%;
+	height: auto;
+}

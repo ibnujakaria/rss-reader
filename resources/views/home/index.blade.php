@@ -64,6 +64,7 @@
 		<div class="panel panel-primary" v-for="article in timeline.site.articles">
 			<div class="panel-heading" style="background:#336E7B;">@{{article.title}}</div>
 			<div class="panel-body">
+				<img class="article-cover" :src="article.picture" v-if="article.picture">
 				<small class="text-muted">@{{article.author}} | @{{article.pub_date}}</small>
 				<p v-html="article.description"></p>
 			</div>
@@ -85,6 +86,7 @@
 		<div class="panel panel-primary" v-for="article in timeline.articles.data">
 			<div class="panel-heading" style="background:#336E7B;">@{{article.title}}</div>
 			<div class="panel-body">
+				<img class="article-cover" :src="article.picture" v-if="article.picture">
 				<small class="text-muted">@{{article.author}} | @{{article.pub_date}}</small>
 				<p v-html="article.description"></p>
 			</div>
