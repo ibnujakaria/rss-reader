@@ -30,9 +30,18 @@
   background: white;
 }
 
+.modal-fullscreen .modal-content {
+  max-width: 800px;
+  margin: auto;
+}
+
 .modal-fullscreen .article-content {
   text-align: justify;
-  font-size: 14pt;
+  font-size: 16pt;
+  text-indent: 1.5;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #333333;
+  text-indent: 50pt;
 }
 
 .img-fullscreen {
