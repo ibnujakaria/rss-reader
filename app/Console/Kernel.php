@@ -25,8 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('rss:update')->withoutOverlapping()->appendOutputTo("rss-reader.update");
+        $schedule->command('rss:get-article-details')->withoutOverlapping()->appendOutputTo("rss-reader.get-article-details");
     }
 
     /**

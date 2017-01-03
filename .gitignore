@@ -6,3 +6,5 @@
 Homestead.json
 Homestead.yaml
 .env
+rss-reader.update
+rss-reader.get-article-details

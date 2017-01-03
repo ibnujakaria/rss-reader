@@ -37,6 +37,10 @@
   margin: auto;
 }
 
+.modal-fullscreen .modal-content img {
+  max-width: 100%;
+}
+
 .modal-fullscreen .article-content {
   text-align: justify;
   font-size: 16pt;
